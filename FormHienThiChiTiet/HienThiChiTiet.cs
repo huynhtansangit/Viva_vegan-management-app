@@ -14,7 +14,6 @@ namespace Viva_vegan
 {
     public partial class HienThiChiTiet : Form
     {
-        private MonAn monan;
         private Byte[] imgByte;
         public HienThiChiTiet(Byte[] imgByteTransferred = null)
         {

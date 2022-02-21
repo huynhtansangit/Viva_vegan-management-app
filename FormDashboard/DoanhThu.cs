@@ -35,13 +35,13 @@ namespace Viva_vegan.FormDashboard
             LoadStaffRate();
         }
         #region Mothods
-        private void LoadChiTiet ()
+        private async void LoadChiTiet ()
         {
-            var doanhThuTruocThue = ConnectDataBase.SessionConnect.executeScalar(queryDoanhthu);
-            var soBanDangHoatDong = ConnectDataBase.SessionConnect.executeScalar(queryBanDangHoatDong);
-            var soHoaDon = ConnectDataBase.SessionConnect.executeScalar(querySoDonHang);
-            var tongSoBan = ConnectDataBase.SessionConnect.executeScalar(queryTongSoBan);
-            var tongVat = ConnectDataBase.SessionConnect.executeScalar(queryVat);
+            var doanhThuTruocThue =await ConnectDataBase.SessionConnect.executeScalarAsync(queryDoanhthu);
+            var soBanDangHoatDong = await ConnectDataBase.SessionConnect.executeScalarAsync(queryBanDangHoatDong);
+            var soHoaDon = await ConnectDataBase.SessionConnect.executeScalarAsync(querySoDonHang);
+            var tongSoBan = await ConnectDataBase.SessionConnect.executeScalarAsync(queryTongSoBan);
+            var tongVat = await ConnectDataBase.SessionConnect.executeScalarAsync(queryVat);
             // Doanh thu
             //
             InvokeIfRequired(lblsodoanhthu, (MethodInvoker)delegate ()
@@ -49,7 +49,8 @@ namespace Viva_vegan.FormDashboard
                 lblsodoanhthu.Text = Convert.ToInt64(doanhThuTruocThue).ToString("C0");
                 lblsodangsudung.Text = soBanDangHoatDong.ToString() + "/" + tongSoBan.ToString();
                 lblsodonhang.Text = soHoaDon.ToString();
-                lblvat.Text = Convert.ToInt64(tongVat).ToString("C0");
+                string s = Convert.ToInt64(tongVat).ToString();
+                lblvat.Text = OptimizedPerformance.formatCurrency(decimal.Parse(s));
             });
         }
         private void On_Quit()

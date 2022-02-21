@@ -49,7 +49,8 @@ namespace Viva_vegan.ClassCSharp
         #region Methods
         public List<Ban> loadList(String makhuvuc)
         {
-            String query = "select * from ban";
+            // load nhung ban dang trong trang thai hoat dong binh thuong
+            String query = "select * from ban where matrangthai='activ'";
             if (!String.IsNullOrWhiteSpace(makhuvuc))
             {
                 query = "select * from ban where makhuvuc='" +

@@ -36,7 +36,7 @@
             // flpBan
             // 
             this.flpBan.AutoScroll = true;
-            this.flpBan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(219)))), ((int)(((byte)(149)))));
+            this.flpBan.BackColor = System.Drawing.Color.White;
             this.flpBan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpBan.Location = new System.Drawing.Point(0, 27);
             this.flpBan.Name = "flpBan";

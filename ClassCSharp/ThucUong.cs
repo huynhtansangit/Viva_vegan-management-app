@@ -20,7 +20,7 @@ namespace Viva_vegan.ClassCSharp
         private string ngayxoathucuong;
         public ThucUong(String mathucuong)
         {
-            String query = "select * from thucuong where mathucuong='" + mathucuong +
+            String query = "select * from thucuong where matrangthai='activ' and mathucuong='" + mathucuong +
                 "'";
             DataTable table = ConnectDataBase.SessionConnect.executeQuery(query);
             foreach (DataRow row in table.Rows)
@@ -100,7 +100,7 @@ namespace Viva_vegan.ClassCSharp
         public List<ThucUong> GetThucUongs()
         {
             List<ThucUong> list = new List<ThucUong>();
-            String query = "select * from thucuong";
+            String query = "select * from thucuong where matrangthai='activ'";
             DataTable table = ConnectDataBase.SessionConnect.executeQuery(query);
             foreach (DataRow row in table.Rows)
             {
@@ -138,12 +138,12 @@ namespace Viva_vegan.ClassCSharp
         public List<ThucUong> GetThucUongs(String order)
         {
             List<ThucUong> list = new List<ThucUong>();
-            String query = "select * from ThucUong";
+            String query = "select * from ThucUong where matrangthai='activ'";
             if (order.Contains("giam"))
             {
-                query = "select * from ThucUong order by giaban asc";
+                query = "select * from ThucUong where matrangthai='activ' order by giaban asc";
             }
-            else query = "select * from ThucUong order by giaban desc";
+            else query = "select * from ThucUong where matrangthai='activ' order by giaban desc";
             DataTable table = ConnectDataBase.SessionConnect.executeQuery(query);
             foreach (DataRow row in table.Rows)
             {
@@ -184,7 +184,7 @@ namespace Viva_vegan.ClassCSharp
             String query = "";
             if (timtheo.Contains("Mã"))
             {
-                query = "select * from ThucUong where mathucuong like N'%" + tukhoa +
+                query = "select * from ThucUong where matrangthai='activ' and mathucuong like N'%" + tukhoa +
                     "%'";
                 DataTable table = ConnectDataBase.SessionConnect.executeQuery(query);
                 foreach (DataRow row in table.Rows)
@@ -194,7 +194,7 @@ namespace Viva_vegan.ClassCSharp
             }
             else if (timtheo.Contains("Tên"))
             {
-                query = "select * from ThucUong where tenthucuong like N'%" + tukhoa +
+                query = "select * from ThucUong where matrangthai='activ' and tenthucuong like N'%" + tukhoa +
                     "%'";
                 DataTable table = ConnectDataBase.SessionConnect.executeQuery(query);
                 foreach (DataRow row in table.Rows)

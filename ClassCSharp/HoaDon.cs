@@ -21,7 +21,7 @@ namespace Viva_vegan.ClassCSharp
         private Int32 tiensauthue;
         private Int32 tiennhankh;
         private Int32 tientralaikh;
-        
+        private string makm;
 
         public HoaDon(
             string mahd,
@@ -35,7 +35,8 @@ namespace Viva_vegan.ClassCSharp
             Int32 vat,
             int tiensauthue,
             int tiennhankh,
-            int tientralaikh)
+            int tientralaikh,
+            string makm)
         {
             this.mahd = mahd;
             this.makh = makh;
@@ -49,6 +50,7 @@ namespace Viva_vegan.ClassCSharp
             this.tiensauthue = tiensauthue;
             this.tiennhankh = tiennhankh;
             this.tientralaikh = tientralaikh;
+            this.makm = makm;
         }
         public HoaDon(
             DataRow row)    
@@ -65,6 +67,7 @@ namespace Viva_vegan.ClassCSharp
             this.tiensauthue = Convert.ToInt32(row["TIENSAUTHUE"]);
             this.tiennhankh = Convert.ToInt32(row["TIENNHANKH"]);
             this.tientralaikh = Convert.ToInt32(row["TIENTRALAIKH"]);
+            this.makm = row["makm"].ToString();
         }
         public HoaDon()
         {
@@ -82,6 +85,7 @@ namespace Viva_vegan.ClassCSharp
         public int Tiensauthue { get => tiensauthue; set => tiensauthue = value; }
         public int Tiennhankh { get => tiennhankh; set => tiennhankh = value; }
         public int Tientralaikh { get => tientralaikh; set => tientralaikh = value; }
+        public string Makm { get => makm; set => makm = value; }
 
         #region Methods
         public List<HoaDon> getListHoaDon ()
@@ -122,7 +126,7 @@ namespace Viva_vegan.ClassCSharp
         {
 
             int result = 0;
-            string query = "thaotachoadon @MAHD @MAKH @MANV @NGAYLAP @NOIDUNG @HTTT @SOBAN @TINHTRANGHD @VAT @TIENSAUTHUE @TIENNHANKH @TIENTRALAIKH @request";
+            string query = "thaotachoadon @MAHD @MAKH @MANV @NGAYLAP @NOIDUNG @HTTT @SOBAN @TINHTRANGHD @VAT @TIENSAUTHUE @TIENNHANKH @TIENTRALAIKH @makm @request";
             result = ConnectDataBase.SessionConnect.executeNonQuery(query,
                 new object[] {
                     hd.Mahd,
@@ -137,13 +141,14 @@ namespace Viva_vegan.ClassCSharp
                     hd.Tiensauthue,
                     hd.Tiennhankh,
                     hd.Tientralaikh,
+                    hd.makm,
                     "insert" });
             return result;
         }
         public int capNhatHoaDon ()
         {
             int result = 0;
-            string query = "thaotachoadon @MAHD @MAKH @MANV @NGAYLAP @NOIDUNG @HTTT @SOBAN @TINHTRANGHD @VAT @TIENSAUTHUE @TIENNHANKH @TIENTRALAIKH @request";
+            string query = "thaotachoadon @MAHD @MAKH @MANV @NGAYLAP @NOIDUNG @HTTT @SOBAN @TINHTRANGHD @VAT @TIENSAUTHUE @TIENNHANKH @TIENTRALAIKH @makm @request";
             result = ConnectDataBase.SessionConnect.executeNonQuery(query,
                 new object[] {
                     this.Mahd,
@@ -158,6 +163,7 @@ namespace Viva_vegan.ClassCSharp
                     this.Tiensauthue,
                     this.Tiennhankh,
                     this.Tientralaikh,
+                    this.makm,
                     "update" });
             return result;
         }

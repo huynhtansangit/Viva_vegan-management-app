@@ -13,18 +13,16 @@ namespace Viva_vegan.FormDashboard.GoiMonChild
         private String mahd;
         private String mamon;
         private String tenmon;
-        private String makm;
         private String dvt;
         private int soluong;
         private int dongia;
         private long thanhtien;
 
-        public ChiTietHoaDonBill(string mahd, string mamon, string tenmon, string makm, string dvt, int soluong, int dongia, long thanhtien)
+        public ChiTietHoaDonBill(string mahd, string mamon, string tenmon,string dvt, int soluong, int dongia, long thanhtien)
         {
             this.Mahd = mahd;
             this.Mamon = mamon;
             this.Tenmon = tenmon;
-            this.Makm = makm;
             this.Dvt = dvt;
             this.Soluong = soluong;
             this.Dongia = dongia;
@@ -37,7 +35,6 @@ namespace Viva_vegan.FormDashboard.GoiMonChild
         public string Mahd { get => mahd; set => mahd = value; }
         public string Mamon { get => mamon; set => mamon = value; }
         public string Tenmon { get => tenmon; set => tenmon = value; }
-        public string Makm { get => makm; set => makm = value; }
         public string Dvt { get => dvt; set => dvt = value; }
         public int Soluong { get => soluong; set => soluong = value; }
         public int Dongia { get => dongia; set => dongia = value; }
@@ -62,7 +59,6 @@ namespace Viva_vegan.FormDashboard.GoiMonChild
                             //1. row["tên cột"].tostring
                             //2. row[số thứ tự của cột]
                             row["TENMON"].ToString(),
-                            row["MAKM"].ToString(),
                             row["DVT"].ToString(),
                             Convert.ToInt32(row["SOLUONG"]),
                             Convert.ToInt32(row["GIABAN"]),
@@ -81,7 +77,6 @@ namespace Viva_vegan.FormDashboard.GoiMonChild
                             row["MAHD"].ToString(),
                             row[0].ToString(),
                             row["TENTHUCUONG"].ToString(),
-                            row["MAKM"].ToString(),
                             row["DVT"].ToString(),
                             Convert.ToInt32(row["SOLUONG"]),
                             Convert.ToInt32(row["GIABAN"]),

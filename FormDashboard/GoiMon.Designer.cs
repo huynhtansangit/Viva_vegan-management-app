@@ -39,11 +39,14 @@
             this.pnThucDon = new System.Windows.Forms.Panel();
             this.flpthucdon = new System.Windows.Forms.FlowLayoutPanel();
             this.xuiGradientPanel1 = new XanderUI.XUIGradientPanel();
+            this.btnmonan = new FontAwesome.Sharp.IconButton();
+            this.btnthucuong = new FontAwesome.Sharp.IconButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.rbtnthucuong = new System.Windows.Forms.RadioButton();
             this.rbtndoan = new System.Windows.Forms.RadioButton();
             this.cbbtimtheo = new System.Windows.Forms.ComboBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btntim = new FontAwesome.Sharp.IconButton();
             this.txttimkiem = new System.Windows.Forms.TextBox();
             this.pnChucnang = new System.Windows.Forms.Panel();
             this.dgvhoadon = new System.Windows.Forms.DataGridView();
@@ -57,9 +60,18 @@
             this.pnAttachment = new System.Windows.Forms.Panel();
             this.pnBan = new System.Windows.Forms.Panel();
             this.xuiCustomGroupbox2 = new XanderUI.XUICustomGroupbox();
+            this.xuiGradientPanel5 = new XanderUI.XUIGradientPanel();
             this.pnline1 = new XanderUI.XUIGradientPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnApplykm = new XanderUI.XUIButton();
+            this.btntiensaukhigiamm = new XanderUI.XUIButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbkhachvanglai = new System.Windows.Forms.CheckBox();
+            this.btndangkyvip = new System.Windows.Forms.Button();
+            this.btnkhachvip = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnCapnhathoadon = new XanderUI.XUIButton();
+            this.btngoimonthanhtoan = new XanderUI.XUIButton();
             this.xuiGradientPanel4 = new XanderUI.XUIGradientPanel();
             this.btntienthua = new XanderUI.XUIButton();
             this.label7 = new System.Windows.Forms.Label();
@@ -72,22 +84,17 @@
             this.label4 = new System.Windows.Forms.Label();
             this.xuiGradientPanel2 = new XanderUI.XUIGradientPanel();
             this.btnthanhtien = new XanderUI.XUIButton();
-            this.txbchietkhau = new System.Windows.Forms.TextBox();
+            this.txbsotiendagiam = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.pnline2 = new XanderUI.XUIGradientPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.pnthongtin = new System.Windows.Forms.Panel();
-            this.pnButton = new XanderUI.XUIGradientPanel();
-            this.btnCapnhathoadon = new XanderUI.XUIButton();
-            this.btngoimonthanhtoan = new XanderUI.XUIButton();
             this.btntrangthai = new FontAwesome.Sharp.IconButton();
             this.btnthongtinban = new FontAwesome.Sharp.IconButton();
+            this.pnButton = new XanderUI.XUIGradientPanel();
             this.btnclear = new FontAwesome.Sharp.IconButton();
             this.btnbaochebien = new FontAwesome.Sharp.IconButton();
             this.btnChonban = new FontAwesome.Sharp.IconButton();
-            this.btnmonan = new FontAwesome.Sharp.IconButton();
-            this.btnthucuong = new FontAwesome.Sharp.IconButton();
-            this.btntim = new FontAwesome.Sharp.IconButton();
             this.pnThucDon.SuspendLayout();
             this.xuiGradientPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -110,7 +117,7 @@
             this.pnThucDon.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnThucDon.Location = new System.Drawing.Point(0, 0);
             this.pnThucDon.Name = "pnThucDon";
-            this.pnThucDon.Size = new System.Drawing.Size(513, 763);
+            this.pnThucDon.Size = new System.Drawing.Size(513, 892);
             this.pnThucDon.TabIndex = 3;
             // 
             // flpthucdon
@@ -120,7 +127,7 @@
             this.flpthucdon.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpthucdon.Location = new System.Drawing.Point(0, 162);
             this.flpthucdon.Name = "flpthucdon";
-            this.flpthucdon.Size = new System.Drawing.Size(513, 601);
+            this.flpthucdon.Size = new System.Drawing.Size(513, 730);
             this.flpthucdon.TabIndex = 2;
             // 
             // xuiGradientPanel1
@@ -139,6 +146,49 @@
             this.xuiGradientPanel1.TabIndex = 1;
             this.xuiGradientPanel1.TopLeft = System.Drawing.Color.DeepSkyBlue;
             this.xuiGradientPanel1.TopRight = System.Drawing.Color.Fuchsia;
+            // 
+            // btnmonan
+            // 
+            this.btnmonan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(136)))), ((int)(((byte)(0)))));
+            this.btnmonan.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnmonan.FlatAppearance.BorderSize = 0;
+            this.btnmonan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnmonan.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnmonan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnmonan.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnmonan.IconChar = FontAwesome.Sharp.IconChar.CookieBite;
+            this.btnmonan.IconColor = System.Drawing.Color.White;
+            this.btnmonan.IconSize = 25;
+            this.btnmonan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnmonan.Location = new System.Drawing.Point(282, 0);
+            this.btnmonan.Name = "btnmonan";
+            this.btnmonan.Rotation = 0D;
+            this.btnmonan.Size = new System.Drawing.Size(231, 49);
+            this.btnmonan.TabIndex = 4;
+            this.btnmonan.Text = "Món ăn";
+            this.btnmonan.UseVisualStyleBackColor = false;
+            this.btnmonan.Click += new System.EventHandler(this.Btnmonan_Click);
+            // 
+            // btnthucuong
+            // 
+            this.btnthucuong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btnthucuong.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnthucuong.FlatAppearance.BorderSize = 0;
+            this.btnthucuong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnthucuong.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnthucuong.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnthucuong.IconChar = FontAwesome.Sharp.IconChar.Coffee;
+            this.btnthucuong.IconColor = System.Drawing.Color.Black;
+            this.btnthucuong.IconSize = 25;
+            this.btnthucuong.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnthucuong.Location = new System.Drawing.Point(0, 0);
+            this.btnthucuong.Name = "btnthucuong";
+            this.btnthucuong.Rotation = 0D;
+            this.btnthucuong.Size = new System.Drawing.Size(282, 49);
+            this.btnthucuong.TabIndex = 3;
+            this.btnthucuong.Text = "Thức uống";
+            this.btnthucuong.UseVisualStyleBackColor = false;
+            this.btnthucuong.Click += new System.EventHandler(this.Btnthucuong_Click);
             // 
             // panel2
             // 
@@ -213,6 +263,27 @@
             this.panel3.Size = new System.Drawing.Size(513, 42);
             this.panel3.TabIndex = 9;
             // 
+            // btntim
+            // 
+            this.btntim.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btntim.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btntim.FlatAppearance.BorderSize = 0;
+            this.btntim.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btntim.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btntim.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btntim.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.btntim.IconColor = System.Drawing.Color.Black;
+            this.btntim.IconSize = 25;
+            this.btntim.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btntim.Location = new System.Drawing.Point(282, 0);
+            this.btntim.Name = "btntim";
+            this.btntim.Rotation = 0D;
+            this.btntim.Size = new System.Drawing.Size(231, 42);
+            this.btntim.TabIndex = 16;
+            this.btntim.Text = "Tìm";
+            this.btntim.UseVisualStyleBackColor = false;
+            this.btntim.Click += new System.EventHandler(this.Btntim_Click);
+            // 
             // txttimkiem
             // 
             this.txttimkiem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(136)))), ((int)(((byte)(0)))));
@@ -227,6 +298,7 @@
             this.txttimkiem.TabIndex = 15;
             this.txttimkiem.Text = "Nhập từ khóa ...";
             this.txttimkiem.Click += new System.EventHandler(this.Txttimkiem_Click);
+            this.txttimkiem.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txttimkiem_KeyDown);
             // 
             // pnChucnang
             // 
@@ -257,6 +329,7 @@
             this.dgvhoadon.RowTemplate.Height = 30;
             this.dgvhoadon.Size = new System.Drawing.Size(864, 267);
             this.dgvhoadon.TabIndex = 0;
+            this.dgvhoadon.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.Dgvhoadon_CellBeginEdit);
             this.dgvhoadon.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvhoadon_CellContentClick);
             this.dgvhoadon.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgvhoadon_CellEndEdit);
             this.dgvhoadon.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.Dgvhoadon_EditingControlShowing);
@@ -323,7 +396,7 @@
             this.pnAttachment.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnAttachment.Location = new System.Drawing.Point(513, 267);
             this.pnAttachment.Name = "pnAttachment";
-            this.pnAttachment.Size = new System.Drawing.Size(864, 496);
+            this.pnAttachment.Size = new System.Drawing.Size(864, 625);
             this.pnAttachment.TabIndex = 5;
             // 
             // pnBan
@@ -334,28 +407,42 @@
             this.pnBan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnBan.Location = new System.Drawing.Point(0, 39);
             this.pnBan.Name = "pnBan";
-            this.pnBan.Size = new System.Drawing.Size(864, 457);
+            this.pnBan.Size = new System.Drawing.Size(864, 586);
             this.pnBan.TabIndex = 1;
             // 
             // xuiCustomGroupbox2
             // 
-            this.xuiCustomGroupbox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.xuiCustomGroupbox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.xuiCustomGroupbox2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(136)))), ((int)(((byte)(0)))));
             this.xuiCustomGroupbox2.BorderWidth = 2;
+            this.xuiCustomGroupbox2.Controls.Add(this.xuiGradientPanel5);
             this.xuiCustomGroupbox2.Controls.Add(this.pnline1);
             this.xuiCustomGroupbox2.Controls.Add(this.panel1);
+            this.xuiCustomGroupbox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xuiCustomGroupbox2.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xuiCustomGroupbox2.Location = new System.Drawing.Point(38, 49);
+            this.xuiCustomGroupbox2.Location = new System.Drawing.Point(0, 39);
             this.xuiCustomGroupbox2.Name = "xuiCustomGroupbox2";
             this.xuiCustomGroupbox2.ShowText = true;
-            this.xuiCustomGroupbox2.Size = new System.Drawing.Size(788, 380);
+            this.xuiCustomGroupbox2.Size = new System.Drawing.Size(864, 547);
             this.xuiCustomGroupbox2.TabIndex = 1;
             this.xuiCustomGroupbox2.TabStop = false;
             this.xuiCustomGroupbox2.Text = "Thanh toán";
             this.xuiCustomGroupbox2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(136)))), ((int)(((byte)(0)))));
+            // 
+            // xuiGradientPanel5
+            // 
+            this.xuiGradientPanel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xuiGradientPanel5.BottomLeft = System.Drawing.Color.Transparent;
+            this.xuiGradientPanel5.BottomRight = System.Drawing.Color.Fuchsia;
+            this.xuiGradientPanel5.Location = new System.Drawing.Point(2, 277);
+            this.xuiGradientPanel5.Name = "xuiGradientPanel5";
+            this.xuiGradientPanel5.PrimerColor = System.Drawing.Color.White;
+            this.xuiGradientPanel5.Size = new System.Drawing.Size(864, 2);
+            this.xuiGradientPanel5.Style = XanderUI.XUIGradientPanel.GradientStyle.Corners;
+            this.xuiGradientPanel5.TabIndex = 30;
+            this.xuiGradientPanel5.TopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.xuiGradientPanel5.TopRight = System.Drawing.Color.Indigo;
             // 
             // pnline1
             // 
@@ -363,10 +450,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnline1.BottomLeft = System.Drawing.Color.Transparent;
             this.pnline1.BottomRight = System.Drawing.Color.Fuchsia;
-            this.pnline1.Location = new System.Drawing.Point(-3, 92);
+            this.pnline1.Location = new System.Drawing.Point(2, 146);
             this.pnline1.Name = "pnline1";
             this.pnline1.PrimerColor = System.Drawing.Color.White;
-            this.pnline1.Size = new System.Drawing.Size(788, 2);
+            this.pnline1.Size = new System.Drawing.Size(864, 2);
             this.pnline1.Style = XanderUI.XUIGradientPanel.GradientStyle.Corners;
             this.pnline1.TabIndex = 36;
             this.pnline1.TopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -376,6 +463,12 @@
             // 
             this.panel1.AutoScroll = true;
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel1.Controls.Add(this.btnApplykm);
+            this.panel1.Controls.Add(this.btntiensaukhigiamm);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.cbkhachvanglai);
+            this.panel1.Controls.Add(this.btndangkyvip);
+            this.panel1.Controls.Add(this.btnkhachvip);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.xuiGradientPanel4);
             this.panel1.Controls.Add(this.btntienthua);
@@ -389,284 +482,112 @@
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.xuiGradientPanel2);
             this.panel1.Controls.Add(this.btnthanhtien);
-            this.panel1.Controls.Add(this.txbchietkhau);
+            this.panel1.Controls.Add(this.txbsotiendagiam);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.pnline2);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 25);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(782, 352);
+            this.panel1.Size = new System.Drawing.Size(858, 519);
             this.panel1.TabIndex = 1;
+            // 
+            // btnApplykm
+            // 
+            this.btnApplykm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnApplykm.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnApplykm.ButtonImage = null;
+            this.btnApplykm.ButtonStyle = XanderUI.XUIButton.Style.MaterialRounded;
+            this.btnApplykm.ButtonText = "Apply";
+            this.btnApplykm.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(195)))), ((int)(((byte)(195)))));
+            this.btnApplykm.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(136)))), ((int)(((byte)(0)))));
+            this.btnApplykm.CornerRadius = 5;
+            this.btnApplykm.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnApplykm.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnApplykm.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.btnApplykm.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(136)))), ((int)(((byte)(0)))));
+            this.btnApplykm.ImagePosition = XanderUI.XUIButton.imgPosition.Left;
+            this.btnApplykm.Location = new System.Drawing.Point(537, 216);
+            this.btnApplykm.Name = "btnApplykm";
+            this.btnApplykm.Size = new System.Drawing.Size(116, 33);
+            this.btnApplykm.TabIndex = 41;
+            this.btnApplykm.Tag = "0";
+            this.btnApplykm.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(136)))), ((int)(((byte)(0)))));
+            this.btnApplykm.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnApplykm.Click += new System.EventHandler(this.BtnApplykm_Click);
+            // 
+            // btntiensaukhigiamm
+            // 
+            this.btntiensaukhigiamm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btntiensaukhigiamm.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btntiensaukhigiamm.ButtonImage = null;
+            this.btntiensaukhigiamm.ButtonStyle = XanderUI.XUIButton.Style.MaterialRounded;
+            this.btntiensaukhigiamm.ButtonText = "0đ";
+            this.btntiensaukhigiamm.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(195)))), ((int)(((byte)(195)))));
+            this.btntiensaukhigiamm.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(136)))), ((int)(((byte)(0)))));
+            this.btntiensaukhigiamm.CornerRadius = 5;
+            this.btntiensaukhigiamm.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btntiensaukhigiamm.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btntiensaukhigiamm.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.btntiensaukhigiamm.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(136)))), ((int)(((byte)(0)))));
+            this.btntiensaukhigiamm.ImagePosition = XanderUI.XUIButton.imgPosition.Left;
+            this.btntiensaukhigiamm.Location = new System.Drawing.Point(537, 259);
+            this.btntiensaukhigiamm.Name = "btntiensaukhigiamm";
+            this.btntiensaukhigiamm.Size = new System.Drawing.Size(318, 33);
+            this.btntiensaukhigiamm.TabIndex = 40;
+            this.btntiensaukhigiamm.Tag = "0";
+            this.btntiensaukhigiamm.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(136)))), ((int)(((byte)(0)))));
+            this.btntiensaukhigiamm.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 263);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(252, 22);
+            this.label1.TabIndex = 39;
+            this.label1.Text = "Tổng tiền sau khi giảm";
+            // 
+            // cbkhachvanglai
+            // 
+            this.cbkhachvanglai.AutoSize = true;
+            this.cbkhachvanglai.Location = new System.Drawing.Point(7, 31);
+            this.cbkhachvanglai.Name = "cbkhachvanglai";
+            this.cbkhachvanglai.Size = new System.Drawing.Size(183, 26);
+            this.cbkhachvanglai.TabIndex = 38;
+            this.cbkhachvanglai.Text = "Khách vãng lai";
+            this.cbkhachvanglai.UseVisualStyleBackColor = true;
+            this.cbkhachvanglai.CheckedChanged += new System.EventHandler(this.Cbkhachvanglai_CheckedChanged);
+            // 
+            // btndangkyvip
+            // 
+            this.btndangkyvip.Location = new System.Drawing.Point(492, 21);
+            this.btndangkyvip.Name = "btndangkyvip";
+            this.btndangkyvip.Size = new System.Drawing.Size(279, 45);
+            this.btndangkyvip.TabIndex = 37;
+            this.btndangkyvip.Text = "Đăng ký TK VIP";
+            this.btndangkyvip.UseVisualStyleBackColor = true;
+            this.btndangkyvip.Click += new System.EventHandler(this.Btndangkyvip_Click);
+            // 
+            // btnkhachvip
+            // 
+            this.btnkhachvip.Location = new System.Drawing.Point(210, 21);
+            this.btnkhachvip.Name = "btnkhachvip";
+            this.btnkhachvip.Size = new System.Drawing.Size(276, 45);
+            this.btnkhachvip.TabIndex = 36;
+            this.btnkhachvip.Text = "Khách đã có tài khoản";
+            this.btnkhachvip.UseVisualStyleBackColor = true;
+            this.btnkhachvip.Click += new System.EventHandler(this.Btnkhachvip_Click);
             // 
             // panel4
             // 
             this.panel4.Controls.Add(this.btnCapnhathoadon);
             this.panel4.Controls.Add(this.btngoimonthanhtoan);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 300);
+            this.panel4.Location = new System.Drawing.Point(0, 467);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(782, 52);
+            this.panel4.Size = new System.Drawing.Size(858, 52);
             this.panel4.TabIndex = 35;
-            // 
-            // xuiGradientPanel4
-            // 
-            this.xuiGradientPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.xuiGradientPanel4.BottomLeft = System.Drawing.Color.Transparent;
-            this.xuiGradientPanel4.BottomRight = System.Drawing.Color.Fuchsia;
-            this.xuiGradientPanel4.Location = new System.Drawing.Point(-3, 247);
-            this.xuiGradientPanel4.Name = "xuiGradientPanel4";
-            this.xuiGradientPanel4.PrimerColor = System.Drawing.Color.White;
-            this.xuiGradientPanel4.Size = new System.Drawing.Size(788, 2);
-            this.xuiGradientPanel4.Style = XanderUI.XUIGradientPanel.GradientStyle.Corners;
-            this.xuiGradientPanel4.TabIndex = 34;
-            this.xuiGradientPanel4.TopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.xuiGradientPanel4.TopRight = System.Drawing.Color.Indigo;
-            // 
-            // btntienthua
-            // 
-            this.btntienthua.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btntienthua.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.btntienthua.ButtonImage = null;
-            this.btntienthua.ButtonStyle = XanderUI.XUIButton.Style.MaterialRounded;
-            this.btntienthua.ButtonText = "0đ";
-            this.btntienthua.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(195)))), ((int)(((byte)(195)))));
-            this.btntienthua.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(136)))), ((int)(((byte)(0)))));
-            this.btntienthua.CornerRadius = 5;
-            this.btntienthua.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btntienthua.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btntienthua.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
-            this.btntienthua.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(136)))), ((int)(((byte)(0)))));
-            this.btntienthua.ImagePosition = XanderUI.XUIButton.imgPosition.Left;
-            this.btntienthua.Location = new System.Drawing.Point(615, 254);
-            this.btntienthua.Name = "btntienthua";
-            this.btntienthua.Size = new System.Drawing.Size(164, 30);
-            this.btntienthua.TabIndex = 33;
-            this.btntienthua.Tag = "0";
-            this.btntienthua.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(136)))), ((int)(((byte)(0)))));
-            this.btntienthua.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 261);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(109, 22);
-            this.label7.TabIndex = 32;
-            this.label7.Text = "Tiền thừa";
-            // 
-            // txbtienkhachdua
-            // 
-            this.txbtienkhachdua.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txbtienkhachdua.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbtienkhachdua.Location = new System.Drawing.Point(615, 212);
-            this.txbtienkhachdua.Name = "txbtienkhachdua";
-            this.txbtienkhachdua.Size = new System.Drawing.Size(164, 31);
-            this.txbtienkhachdua.TabIndex = 31;
-            this.txbtienkhachdua.Tag = "0";
-            this.txbtienkhachdua.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txbtienkhachdua.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txbtienkhachdua_KeyDown);
-            this.txbtienkhachdua.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTienKhachDua_KeyPress);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 220);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(164, 22);
-            this.label6.TabIndex = 30;
-            this.label6.Text = "Tiền khách đưa";
-            // 
-            // xuiGradientPanel3
-            // 
-            this.xuiGradientPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.xuiGradientPanel3.BottomLeft = System.Drawing.Color.Transparent;
-            this.xuiGradientPanel3.BottomRight = System.Drawing.Color.Fuchsia;
-            this.xuiGradientPanel3.Location = new System.Drawing.Point(-3, 202);
-            this.xuiGradientPanel3.Name = "xuiGradientPanel3";
-            this.xuiGradientPanel3.PrimerColor = System.Drawing.Color.White;
-            this.xuiGradientPanel3.Size = new System.Drawing.Size(788, 2);
-            this.xuiGradientPanel3.Style = XanderUI.XUIGradientPanel.GradientStyle.Corners;
-            this.xuiGradientPanel3.TabIndex = 29;
-            this.xuiGradientPanel3.TopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.xuiGradientPanel3.TopRight = System.Drawing.Color.Indigo;
-            // 
-            // btnkhuyenmai
-            // 
-            this.btnkhuyenmai.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnkhuyenmai.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.btnkhuyenmai.ButtonImage = null;
-            this.btnkhuyenmai.ButtonStyle = XanderUI.XUIButton.Style.MaterialRounded;
-            this.btnkhuyenmai.ButtonText = "0đ";
-            this.btnkhuyenmai.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(195)))), ((int)(((byte)(195)))));
-            this.btnkhuyenmai.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(136)))), ((int)(((byte)(0)))));
-            this.btnkhuyenmai.CornerRadius = 5;
-            this.btnkhuyenmai.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnkhuyenmai.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnkhuyenmai.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
-            this.btnkhuyenmai.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(136)))), ((int)(((byte)(0)))));
-            this.btnkhuyenmai.ImagePosition = XanderUI.XUIButton.imgPosition.Left;
-            this.btnkhuyenmai.Location = new System.Drawing.Point(615, 166);
-            this.btnkhuyenmai.Name = "btnkhuyenmai";
-            this.btnkhuyenmai.Size = new System.Drawing.Size(164, 30);
-            this.btnkhuyenmai.TabIndex = 28;
-            this.btnkhuyenmai.Tag = "0";
-            this.btnkhuyenmai.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(136)))), ((int)(((byte)(0)))));
-            this.btnkhuyenmai.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            // 
-            // btnvat
-            // 
-            this.btnvat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnvat.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.btnvat.ButtonImage = null;
-            this.btnvat.ButtonStyle = XanderUI.XUIButton.Style.MaterialRounded;
-            this.btnvat.ButtonText = "0đ";
-            this.btnvat.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(195)))), ((int)(((byte)(195)))));
-            this.btnvat.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(136)))), ((int)(((byte)(0)))));
-            this.btnvat.CornerRadius = 5;
-            this.btnvat.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnvat.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnvat.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
-            this.btnvat.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(136)))), ((int)(((byte)(0)))));
-            this.btnvat.ImagePosition = XanderUI.XUIButton.imgPosition.Left;
-            this.btnvat.Location = new System.Drawing.Point(615, 120);
-            this.btnvat.Name = "btnvat";
-            this.btnvat.Size = new System.Drawing.Size(164, 30);
-            this.btnvat.TabIndex = 25;
-            this.btnvat.Tag = "0";
-            this.btnvat.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(136)))), ((int)(((byte)(0)))));
-            this.btnvat.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(0, 178);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(263, 22);
-            this.label5.TabIndex = 27;
-            this.label5.Text = "Chương trình khuyến mãi";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 130);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(131, 22);
-            this.label4.TabIndex = 24;
-            this.label4.Text = "VAT ( 10% )";
-            // 
-            // xuiGradientPanel2
-            // 
-            this.xuiGradientPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.xuiGradientPanel2.BottomLeft = System.Drawing.Color.Transparent;
-            this.xuiGradientPanel2.BottomRight = System.Drawing.Color.Fuchsia;
-            this.xuiGradientPanel2.Location = new System.Drawing.Point(-3, 156);
-            this.xuiGradientPanel2.Name = "xuiGradientPanel2";
-            this.xuiGradientPanel2.PrimerColor = System.Drawing.Color.White;
-            this.xuiGradientPanel2.Size = new System.Drawing.Size(788, 2);
-            this.xuiGradientPanel2.Style = XanderUI.XUIGradientPanel.GradientStyle.Corners;
-            this.xuiGradientPanel2.TabIndex = 26;
-            this.xuiGradientPanel2.TopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.xuiGradientPanel2.TopRight = System.Drawing.Color.Indigo;
-            // 
-            // btnthanhtien
-            // 
-            this.btnthanhtien.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnthanhtien.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.btnthanhtien.ButtonImage = null;
-            this.btnthanhtien.ButtonStyle = XanderUI.XUIButton.Style.MaterialRounded;
-            this.btnthanhtien.ButtonText = "0đ";
-            this.btnthanhtien.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(195)))), ((int)(((byte)(195)))));
-            this.btnthanhtien.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(136)))), ((int)(((byte)(0)))));
-            this.btnthanhtien.CornerRadius = 5;
-            this.btnthanhtien.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnthanhtien.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnthanhtien.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
-            this.btnthanhtien.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(136)))), ((int)(((byte)(0)))));
-            this.btnthanhtien.ImagePosition = XanderUI.XUIButton.imgPosition.Left;
-            this.btnthanhtien.Location = new System.Drawing.Point(615, 32);
-            this.btnthanhtien.Name = "btnthanhtien";
-            this.btnthanhtien.Size = new System.Drawing.Size(164, 30);
-            this.btnthanhtien.TabIndex = 23;
-            this.btnthanhtien.Tag = "0";
-            this.btnthanhtien.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(136)))), ((int)(((byte)(0)))));
-            this.btnthanhtien.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            // 
-            // txbchietkhau
-            // 
-            this.txbchietkhau.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txbchietkhau.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbchietkhau.Location = new System.Drawing.Point(615, 78);
-            this.txbchietkhau.Name = "txbchietkhau";
-            this.txbchietkhau.Size = new System.Drawing.Size(164, 31);
-            this.txbchietkhau.TabIndex = 22;
-            this.txbchietkhau.Tag = "0";
-            this.txbchietkhau.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txbchietkhau.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txbchietkhau_KeyDown);
-            this.txbchietkhau.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTienKhachDua_KeyPress);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 86);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(164, 22);
-            this.label3.TabIndex = 21;
-            this.label3.Text = "Chiết khấu (%)";
-            // 
-            // pnline2
-            // 
-            this.pnline2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnline2.BottomLeft = System.Drawing.Color.Transparent;
-            this.pnline2.BottomRight = System.Drawing.Color.Fuchsia;
-            this.pnline2.Location = new System.Drawing.Point(-3, 112);
-            this.pnline2.Name = "pnline2";
-            this.pnline2.PrimerColor = System.Drawing.Color.White;
-            this.pnline2.Size = new System.Drawing.Size(788, 2);
-            this.pnline2.Style = XanderUI.XUIGradientPanel.GradientStyle.Corners;
-            this.pnline2.TabIndex = 20;
-            this.pnline2.TopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.pnline2.TopRight = System.Drawing.Color.Indigo;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 38);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(175, 22);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "Tổng thành tiền";
-            // 
-            // pnthongtin
-            // 
-            this.pnthongtin.Controls.Add(this.btntrangthai);
-            this.pnthongtin.Controls.Add(this.btnthongtinban);
-            this.pnthongtin.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnthongtin.Location = new System.Drawing.Point(0, 0);
-            this.pnthongtin.Name = "pnthongtin";
-            this.pnthongtin.Size = new System.Drawing.Size(864, 31);
-            this.pnthongtin.TabIndex = 0;
-            // 
-            // pnButton
-            // 
-            this.pnButton.BottomLeft = System.Drawing.Color.Black;
-            this.pnButton.BottomRight = System.Drawing.Color.Fuchsia;
-            this.pnButton.Controls.Add(this.btnclear);
-            this.pnButton.Controls.Add(this.btnbaochebien);
-            this.pnButton.Controls.Add(this.btnChonban);
-            this.pnButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnButton.Location = new System.Drawing.Point(0, 0);
-            this.pnButton.Name = "pnButton";
-            this.pnButton.PrimerColor = System.Drawing.Color.White;
-            this.pnButton.Size = new System.Drawing.Size(864, 39);
-            this.pnButton.Style = XanderUI.XUIGradientPanel.GradientStyle.Corners;
-            this.pnButton.TabIndex = 0;
-            this.pnButton.TopLeft = System.Drawing.Color.DeepSkyBlue;
-            this.pnButton.TopRight = System.Drawing.Color.Fuchsia;
             // 
             // btnCapnhathoadon
             // 
@@ -685,7 +606,7 @@
             this.btnCapnhathoadon.ImagePosition = XanderUI.XUIButton.imgPosition.Left;
             this.btnCapnhathoadon.Location = new System.Drawing.Point(405, 0);
             this.btnCapnhathoadon.Name = "btnCapnhathoadon";
-            this.btnCapnhathoadon.Size = new System.Drawing.Size(377, 52);
+            this.btnCapnhathoadon.Size = new System.Drawing.Size(453, 52);
             this.btnCapnhathoadon.TabIndex = 37;
             this.btnCapnhathoadon.TextColor = System.Drawing.Color.Black;
             this.btnCapnhathoadon.Vertical_Alignment = System.Drawing.StringAlignment.Center;
@@ -714,6 +635,250 @@
             this.btngoimonthanhtoan.Vertical_Alignment = System.Drawing.StringAlignment.Center;
             this.btngoimonthanhtoan.Click += new System.EventHandler(this.Btngoimonthanhtoan_Click);
             // 
+            // xuiGradientPanel4
+            // 
+            this.xuiGradientPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xuiGradientPanel4.BottomLeft = System.Drawing.Color.Transparent;
+            this.xuiGradientPanel4.BottomRight = System.Drawing.Color.Fuchsia;
+            this.xuiGradientPanel4.Location = new System.Drawing.Point(-3, 338);
+            this.xuiGradientPanel4.Name = "xuiGradientPanel4";
+            this.xuiGradientPanel4.PrimerColor = System.Drawing.Color.White;
+            this.xuiGradientPanel4.Size = new System.Drawing.Size(864, 2);
+            this.xuiGradientPanel4.Style = XanderUI.XUIGradientPanel.GradientStyle.Corners;
+            this.xuiGradientPanel4.TabIndex = 34;
+            this.xuiGradientPanel4.TopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.xuiGradientPanel4.TopRight = System.Drawing.Color.Indigo;
+            // 
+            // btntienthua
+            // 
+            this.btntienthua.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btntienthua.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btntienthua.ButtonImage = null;
+            this.btntienthua.ButtonStyle = XanderUI.XUIButton.Style.MaterialRounded;
+            this.btntienthua.ButtonText = "0đ";
+            this.btntienthua.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(195)))), ((int)(((byte)(195)))));
+            this.btntienthua.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(136)))), ((int)(((byte)(0)))));
+            this.btntienthua.CornerRadius = 5;
+            this.btntienthua.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btntienthua.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btntienthua.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.btntienthua.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(136)))), ((int)(((byte)(0)))));
+            this.btntienthua.ImagePosition = XanderUI.XUIButton.imgPosition.Left;
+            this.btntienthua.Location = new System.Drawing.Point(537, 345);
+            this.btntienthua.Name = "btntienthua";
+            this.btntienthua.Size = new System.Drawing.Size(318, 33);
+            this.btntienthua.TabIndex = 33;
+            this.btntienthua.Tag = "0";
+            this.btntienthua.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(136)))), ((int)(((byte)(0)))));
+            this.btntienthua.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(3, 352);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(109, 22);
+            this.label7.TabIndex = 32;
+            this.label7.Text = "Tiền thừa";
+            // 
+            // txbtienkhachdua
+            // 
+            this.txbtienkhachdua.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txbtienkhachdua.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbtienkhachdua.Location = new System.Drawing.Point(537, 303);
+            this.txbtienkhachdua.Name = "txbtienkhachdua";
+            this.txbtienkhachdua.Size = new System.Drawing.Size(318, 31);
+            this.txbtienkhachdua.TabIndex = 31;
+            this.txbtienkhachdua.Tag = "0";
+            this.txbtienkhachdua.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txbtienkhachdua.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txbtienkhachdua_KeyDown);
+            this.txbtienkhachdua.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTienKhachDua_KeyPress);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 311);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(164, 22);
+            this.label6.TabIndex = 30;
+            this.label6.Text = "Tiền khách đưa";
+            // 
+            // xuiGradientPanel3
+            // 
+            this.xuiGradientPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xuiGradientPanel3.BottomLeft = System.Drawing.Color.Transparent;
+            this.xuiGradientPanel3.BottomRight = System.Drawing.Color.Fuchsia;
+            this.xuiGradientPanel3.Location = new System.Drawing.Point(-3, 295);
+            this.xuiGradientPanel3.Name = "xuiGradientPanel3";
+            this.xuiGradientPanel3.PrimerColor = System.Drawing.Color.White;
+            this.xuiGradientPanel3.Size = new System.Drawing.Size(864, 2);
+            this.xuiGradientPanel3.Style = XanderUI.XUIGradientPanel.GradientStyle.Corners;
+            this.xuiGradientPanel3.TabIndex = 29;
+            this.xuiGradientPanel3.TopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.xuiGradientPanel3.TopRight = System.Drawing.Color.Indigo;
+            // 
+            // btnkhuyenmai
+            // 
+            this.btnkhuyenmai.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnkhuyenmai.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnkhuyenmai.ButtonImage = null;
+            this.btnkhuyenmai.ButtonStyle = XanderUI.XUIButton.Style.MaterialRounded;
+            this.btnkhuyenmai.ButtonText = "0đ";
+            this.btnkhuyenmai.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(195)))), ((int)(((byte)(195)))));
+            this.btnkhuyenmai.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(136)))), ((int)(((byte)(0)))));
+            this.btnkhuyenmai.CornerRadius = 5;
+            this.btnkhuyenmai.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnkhuyenmai.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnkhuyenmai.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.btnkhuyenmai.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(136)))), ((int)(((byte)(0)))));
+            this.btnkhuyenmai.ImagePosition = XanderUI.XUIButton.imgPosition.Left;
+            this.btnkhuyenmai.Location = new System.Drawing.Point(650, 216);
+            this.btnkhuyenmai.Name = "btnkhuyenmai";
+            this.btnkhuyenmai.Size = new System.Drawing.Size(205, 33);
+            this.btnkhuyenmai.TabIndex = 28;
+            this.btnkhuyenmai.Tag = "0";
+            this.btnkhuyenmai.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(136)))), ((int)(((byte)(0)))));
+            this.btnkhuyenmai.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnkhuyenmai.Click += new System.EventHandler(this.Btnkhuyenmai_Click);
+            // 
+            // btnvat
+            // 
+            this.btnvat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnvat.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnvat.ButtonImage = null;
+            this.btnvat.ButtonStyle = XanderUI.XUIButton.Style.MaterialRounded;
+            this.btnvat.ButtonText = "0đ";
+            this.btnvat.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(195)))), ((int)(((byte)(195)))));
+            this.btnvat.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(136)))), ((int)(((byte)(0)))));
+            this.btnvat.CornerRadius = 5;
+            this.btnvat.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnvat.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnvat.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.btnvat.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(136)))), ((int)(((byte)(0)))));
+            this.btnvat.ImagePosition = XanderUI.XUIButton.imgPosition.Left;
+            this.btnvat.Location = new System.Drawing.Point(537, 127);
+            this.btnvat.Name = "btnvat";
+            this.btnvat.Size = new System.Drawing.Size(318, 33);
+            this.btnvat.TabIndex = 25;
+            this.btnvat.Tag = "0";
+            this.btnvat.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(136)))), ((int)(((byte)(0)))));
+            this.btnvat.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 221);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(263, 22);
+            this.label5.TabIndex = 27;
+            this.label5.Text = "Chương trình khuyến mãi";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 132);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(131, 22);
+            this.label4.TabIndex = 24;
+            this.label4.Text = "VAT ( 10% )";
+            // 
+            // xuiGradientPanel2
+            // 
+            this.xuiGradientPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xuiGradientPanel2.BottomLeft = System.Drawing.Color.Transparent;
+            this.xuiGradientPanel2.BottomRight = System.Drawing.Color.Fuchsia;
+            this.xuiGradientPanel2.Location = new System.Drawing.Point(-3, 207);
+            this.xuiGradientPanel2.Name = "xuiGradientPanel2";
+            this.xuiGradientPanel2.PrimerColor = System.Drawing.Color.White;
+            this.xuiGradientPanel2.Size = new System.Drawing.Size(864, 2);
+            this.xuiGradientPanel2.Style = XanderUI.XUIGradientPanel.GradientStyle.Corners;
+            this.xuiGradientPanel2.TabIndex = 26;
+            this.xuiGradientPanel2.TopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.xuiGradientPanel2.TopRight = System.Drawing.Color.Indigo;
+            // 
+            // btnthanhtien
+            // 
+            this.btnthanhtien.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnthanhtien.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnthanhtien.ButtonImage = null;
+            this.btnthanhtien.ButtonStyle = XanderUI.XUIButton.Style.MaterialRounded;
+            this.btnthanhtien.ButtonText = "0đ";
+            this.btnthanhtien.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(195)))), ((int)(((byte)(195)))));
+            this.btnthanhtien.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(136)))), ((int)(((byte)(0)))));
+            this.btnthanhtien.CornerRadius = 5;
+            this.btnthanhtien.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnthanhtien.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnthanhtien.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.btnthanhtien.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(136)))), ((int)(((byte)(0)))));
+            this.btnthanhtien.ImagePosition = XanderUI.XUIButton.imgPosition.Left;
+            this.btnthanhtien.Location = new System.Drawing.Point(537, 83);
+            this.btnthanhtien.Name = "btnthanhtien";
+            this.btnthanhtien.Size = new System.Drawing.Size(318, 33);
+            this.btnthanhtien.TabIndex = 23;
+            this.btnthanhtien.Tag = "0";
+            this.btnthanhtien.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(136)))), ((int)(((byte)(0)))));
+            this.btnthanhtien.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            // 
+            // txbsotiendagiam
+            // 
+            this.txbsotiendagiam.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txbsotiendagiam.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbsotiendagiam.Location = new System.Drawing.Point(537, 169);
+            this.txbsotiendagiam.Name = "txbsotiendagiam";
+            this.txbsotiendagiam.ReadOnly = true;
+            this.txbsotiendagiam.Size = new System.Drawing.Size(318, 31);
+            this.txbsotiendagiam.TabIndex = 22;
+            this.txbsotiendagiam.Tag = "0";
+            this.txbsotiendagiam.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txbsotiendagiam.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txbchietkhau_KeyDown);
+            this.txbsotiendagiam.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTienKhachDua_KeyPress);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 177);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(241, 22);
+            this.label3.TabIndex = 21;
+            this.label3.Text = "Số tiền đã giảm (VIP)";
+            // 
+            // pnline2
+            // 
+            this.pnline2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnline2.BottomLeft = System.Drawing.Color.Transparent;
+            this.pnline2.BottomRight = System.Drawing.Color.Fuchsia;
+            this.pnline2.Location = new System.Drawing.Point(-3, 163);
+            this.pnline2.Name = "pnline2";
+            this.pnline2.PrimerColor = System.Drawing.Color.White;
+            this.pnline2.Size = new System.Drawing.Size(864, 2);
+            this.pnline2.Style = XanderUI.XUIGradientPanel.GradientStyle.Corners;
+            this.pnline2.TabIndex = 20;
+            this.pnline2.TopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.pnline2.TopRight = System.Drawing.Color.Indigo;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 89);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(329, 22);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Tổng thành tiền (bao gồm VAT)";
+            // 
+            // pnthongtin
+            // 
+            this.pnthongtin.Controls.Add(this.btntrangthai);
+            this.pnthongtin.Controls.Add(this.btnthongtinban);
+            this.pnthongtin.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnthongtin.Location = new System.Drawing.Point(0, 0);
+            this.pnthongtin.Name = "pnthongtin";
+            this.pnthongtin.Size = new System.Drawing.Size(864, 39);
+            this.pnthongtin.TabIndex = 0;
+            // 
             // btntrangthai
             // 
             this.btntrangthai.BackColor = System.Drawing.Color.White;
@@ -727,7 +892,7 @@
             this.btntrangthai.Location = new System.Drawing.Point(304, 0);
             this.btntrangthai.Name = "btntrangthai";
             this.btntrangthai.Rotation = 0D;
-            this.btntrangthai.Size = new System.Drawing.Size(295, 31);
+            this.btntrangthai.Size = new System.Drawing.Size(295, 39);
             this.btntrangthai.TabIndex = 1;
             this.btntrangthai.Text = "Đang thực hiện";
             this.btntrangthai.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -746,11 +911,28 @@
             this.btnthongtinban.Location = new System.Drawing.Point(0, 0);
             this.btnthongtinban.Name = "btnthongtinban";
             this.btnthongtinban.Rotation = 0D;
-            this.btnthongtinban.Size = new System.Drawing.Size(304, 31);
+            this.btnthongtinban.Size = new System.Drawing.Size(304, 39);
             this.btnthongtinban.TabIndex = 0;
             this.btnthongtinban.Text = "Thông tin bàn";
             this.btnthongtinban.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnthongtinban.UseVisualStyleBackColor = false;
+            // 
+            // pnButton
+            // 
+            this.pnButton.BottomLeft = System.Drawing.Color.Black;
+            this.pnButton.BottomRight = System.Drawing.Color.Fuchsia;
+            this.pnButton.Controls.Add(this.btnclear);
+            this.pnButton.Controls.Add(this.btnbaochebien);
+            this.pnButton.Controls.Add(this.btnChonban);
+            this.pnButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnButton.Location = new System.Drawing.Point(0, 0);
+            this.pnButton.Name = "pnButton";
+            this.pnButton.PrimerColor = System.Drawing.Color.White;
+            this.pnButton.Size = new System.Drawing.Size(864, 39);
+            this.pnButton.Style = XanderUI.XUIGradientPanel.GradientStyle.Corners;
+            this.pnButton.TabIndex = 0;
+            this.pnButton.TopLeft = System.Drawing.Color.DeepSkyBlue;
+            this.pnButton.TopRight = System.Drawing.Color.Fuchsia;
             // 
             // btnclear
             // 
@@ -818,82 +1000,19 @@
             this.btnChonban.UseVisualStyleBackColor = false;
             this.btnChonban.Click += new System.EventHandler(this.IconButton1_Click);
             // 
-            // btnmonan
-            // 
-            this.btnmonan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(136)))), ((int)(((byte)(0)))));
-            this.btnmonan.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnmonan.FlatAppearance.BorderSize = 0;
-            this.btnmonan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnmonan.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnmonan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnmonan.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnmonan.IconChar = FontAwesome.Sharp.IconChar.CookieBite;
-            this.btnmonan.IconColor = System.Drawing.Color.White;
-            this.btnmonan.IconSize = 25;
-            this.btnmonan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnmonan.Location = new System.Drawing.Point(282, 0);
-            this.btnmonan.Name = "btnmonan";
-            this.btnmonan.Rotation = 0D;
-            this.btnmonan.Size = new System.Drawing.Size(231, 49);
-            this.btnmonan.TabIndex = 4;
-            this.btnmonan.Text = "Món ăn";
-            this.btnmonan.UseVisualStyleBackColor = false;
-            this.btnmonan.Click += new System.EventHandler(this.Btnmonan_Click);
-            // 
-            // btnthucuong
-            // 
-            this.btnthucuong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.btnthucuong.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnthucuong.FlatAppearance.BorderSize = 0;
-            this.btnthucuong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnthucuong.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnthucuong.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnthucuong.IconChar = FontAwesome.Sharp.IconChar.Coffee;
-            this.btnthucuong.IconColor = System.Drawing.Color.Black;
-            this.btnthucuong.IconSize = 25;
-            this.btnthucuong.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnthucuong.Location = new System.Drawing.Point(0, 0);
-            this.btnthucuong.Name = "btnthucuong";
-            this.btnthucuong.Rotation = 0D;
-            this.btnthucuong.Size = new System.Drawing.Size(282, 49);
-            this.btnthucuong.TabIndex = 3;
-            this.btnthucuong.Text = "Thức uống";
-            this.btnthucuong.UseVisualStyleBackColor = false;
-            this.btnthucuong.Click += new System.EventHandler(this.Btnthucuong_Click);
-            // 
-            // btntim
-            // 
-            this.btntim.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.btntim.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btntim.FlatAppearance.BorderSize = 0;
-            this.btntim.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btntim.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btntim.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btntim.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.btntim.IconColor = System.Drawing.Color.Black;
-            this.btntim.IconSize = 25;
-            this.btntim.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btntim.Location = new System.Drawing.Point(282, 0);
-            this.btntim.Name = "btntim";
-            this.btntim.Rotation = 0D;
-            this.btntim.Size = new System.Drawing.Size(231, 42);
-            this.btntim.TabIndex = 16;
-            this.btntim.Text = "Tìm";
-            this.btntim.UseVisualStyleBackColor = false;
-            this.btntim.Click += new System.EventHandler(this.Btntim_Click);
-            // 
             // GoiMon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(219)))), ((int)(((byte)(149)))));
-            this.ClientSize = new System.Drawing.Size(1377, 763);
+            this.ClientSize = new System.Drawing.Size(1377, 892);
             this.Controls.Add(this.pnAttachment);
             this.Controls.Add(this.pnChucnang);
             this.Controls.Add(this.pnThucDon);
             this.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "GoiMon";
             this.Text = "GoiMon";
+            this.Load += new System.EventHandler(this.GoiMon_Load);
             this.Resize += new System.EventHandler(this.GoiMon_ResizeEnd);
             this.pnThucDon.ResumeLayout(false);
             this.xuiGradientPanel1.ResumeLayout(false);
@@ -933,7 +1052,7 @@
         public System.Windows.Forms.Label label4;
         public XanderUI.XUIGradientPanel xuiGradientPanel2;
         public XanderUI.XUIButton btnthanhtien;
-        public System.Windows.Forms.TextBox txbchietkhau;
+        public System.Windows.Forms.TextBox txbsotiendagiam;
         public System.Windows.Forms.Label label3;
         public XanderUI.XUIGradientPanel pnline2;
         public System.Windows.Forms.Label label2;
@@ -968,5 +1087,12 @@
         public System.Windows.Forms.RadioButton rbtnthucuong;
         public System.Windows.Forms.TextBox txttimkiem;
         public FontAwesome.Sharp.IconButton btntim;
+        private System.Windows.Forms.Button btndangkyvip;
+        private System.Windows.Forms.Button btnkhachvip;
+        public XanderUI.XUIGradientPanel xuiGradientPanel5;
+        public XanderUI.XUIButton btntiensaukhigiamm;
+        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.CheckBox cbkhachvanglai;
+        public XanderUI.XUIButton btnApplykm;
     }
 }

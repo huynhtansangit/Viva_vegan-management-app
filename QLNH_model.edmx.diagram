@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3475ba1151704470933bf8f31611ae90" Name="Diagram1">
+        <EntityTypeShape EntityType="QLNH.BAN" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLNH.BOPHAN" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLNH.CHUCVU" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLNH.CHUONGTRINHKM" Width="1.5" PointX="3" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLNH.DIEUKIENKM" Width="1.5" PointX="5.25" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLNH.HOADON" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLNH.KHACHHANG" Width="1.5" PointX="3" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLNH.KHO" Width="1.5" PointX="5.25" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLNH.KHUVUC" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLNH.LOAICTKM" Width="1.5" PointX="0.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLNH.LOAIKH" Width="1.5" PointX="0.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLNH.MONAN" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLNH.NGUYENLIEU" Width="1.5" PointX="5.25" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLNH.NHANVIEN" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLNH.QUANHE_HD_DKKM" Width="1.5" PointX="7.5" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLNH.QUYENHAN" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLNH.sysdiagram" Width="1.5" PointX="9.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLNH.THUCUONG" Width="1.5" PointX="5.25" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLNH.TONKHO" Width="1.5" PointX="7.5" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLNH.TRANGTHAI" Width="1.5" PointX="9.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLNH.CTHD_MA" Width="1.5" PointX="7.5" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLNH.CTHD_TU" Width="1.5" PointX="7.5" PointY="10.125" IsExpanded="true" />
+        <AssociationConnector Association="QLNH.FK_BAN_KHUVUC" ManuallyRouted="false" />
+        <AssociationConnector Association="QLNH.FK_HOADON_BAN" ManuallyRouted="false" />
+        <AssociationConnector Association="QLNH.FK_NHANVIEN_BP_NV_BOPHAN" ManuallyRouted="false" />
+        <AssociationConnector Association="QLNH.FK_NHANVIEN_NV_CV_CHUCVU" ManuallyRouted="false" />
+        <AssociationConnector Association="QLNH.FK_qh_cv" ManuallyRouted="false" />
+        <AssociationConnector Association="QLNH.FK_CHUONGTR_LOAIKM_CT_LOAICTKM" ManuallyRouted="false" />
+        <AssociationConnector Association="QLNH.fk_dkkm_ctkm" ManuallyRouted="false" />
+        <AssociationConnector Association="QLNH.Fk_hoadon_chuongtrinhkm" ManuallyRouted="false" />
+        <AssociationConnector Association="QLNH.fk_qh_dkkm" ManuallyRouted="false" />
+        <AssociationConnector Association="QLNH.FK_CTHD_CTHD2_HOADON" ManuallyRouted="false" />
+        <AssociationConnector Association="QLNH.FK_CTHD2_CTHD2_HOADON" ManuallyRouted="false" />
+        <AssociationConnector Association="QLNH.FK_HOADON_KH_HD_KHACHHAN" ManuallyRouted="false" />
+        <AssociationConnector Association="QLNH.FK_HOADON_NV_HD_NHANVIEN" ManuallyRouted="false" />
+        <AssociationConnector Association="QLNH.fk_qh_mahd" ManuallyRouted="false" />
+        <AssociationConnector Association="QLNH.FK_KH_LOAIKH" ManuallyRouted="false" />
+        <AssociationConnector Association="QLNH.FK_TONKHO_KHO" ManuallyRouted="false" />
+        <AssociationConnector Association="QLNH.FK_cthd_monan" ManuallyRouted="false" />
+        <AssociationConnector Association="QLNH.FK_TONKHO_NGUYENLIEU" ManuallyRouted="false" />
+        <AssociationConnector Association="QLNH.FK_CTHD2_THUCUONG" ManuallyRouted="false" />
+        <AssociationConnector Association="QLNH.FK_TONKHO_THUCUONG" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

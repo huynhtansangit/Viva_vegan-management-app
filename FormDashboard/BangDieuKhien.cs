@@ -11,6 +11,7 @@ using System.IO;
 using System.Data.SqlClient;
 using Viva_vegan.ClassCSharp;
 using System.Globalization;
+using Viva_vegan.ClassCSharp.ChuongTrinhKM;
 
 namespace Viva_vegan.FormDashboard
 {
@@ -45,7 +46,6 @@ namespace Viva_vegan.FormDashboard
             OptimizedPerformance.DoubleBuffered(dgvthucuong, true);
             OptimizedPerformance.DoubleBuffered(dgvnhanvien, true);
             OptimizedPerformance.DoubleBuffered(dgvKhachhang, true);
-
         }
         #region Events
         private void XuiButton1_Click(object sender, EventArgs e)
@@ -87,7 +87,7 @@ namespace Viva_vegan.FormDashboard
         {
             picBoxLoadingTable.Show();
             picBoxLoadingTable.Update();
-            OptimizedPerformance.fromTableToDgv(await objBan.loadTableBan(), dgvban,"ban");
+            OptimizedPerformance.fromTableToDgv(await objBan.loadTableBan(), dgvban, "ban");
             picBoxLoadingTable.Hide();
         }
 
@@ -270,27 +270,35 @@ namespace Viva_vegan.FormDashboard
         #region Tab Bàn
         private void Dgvban_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex != -1)
+            try
             {
-                DataGridViewRow row = dgvban.Rows[e.RowIndex];
-                txtmaban.Text = row.Cells["maban"].Value.ToString();
-                txttenban.Text = row.Cells["tenban"].Value.ToString();
-                cbbkhuvuc.Text = row.Cells["khuvuc"].Value.ToString();
-                string matrangthai = row.Cells["matrangthai"].Value.ToString();
-                if (matrangthai == "elimi")
+                if (e.RowIndex != -1 && e.RowIndex < dgvban.RowCount - 1)
                 {
-                    txbtentrangthai.Text = "Dừng hoạt động";
-                    OptimizedPerformance.disableButton(new Button[] { btnxoa, btnsua });
+                    DataGridViewRow row = dgvban.Rows[e.RowIndex];
+                    txtmaban.Text = row.Cells["maban"].Value.ToString();
+                    txttenban.Text = row.Cells["tenban"].Value.ToString();
+                    cbbkhuvuc.Text = row.Cells["khuvuc"].Value.ToString();
+                    string matrangthai = row.Cells["matrangthai"].Value.ToString();
+                    if (matrangthai == "elimi")
+                    {
+                        txbtentrangthai.Text = "Dừng hoạt động";
+                        OptimizedPerformance.disableButton(new Button[] { btnxoa, btnsua });
+                    }
+                    else
+                    {
+                        OptimizedPerformance.enableButton(new Button[] { btnxoa, btnsua });
+                        txbtentrangthai.Text = "Hoạt động bình thường";
+                    }
+                    if (row.Cells["ngayxoaban"] != null)
+                    {
+                        txbngayxoa.Text = row.Cells["ngayxoaban"].Value.ToString();
+                    }
                 }
-                else
-                {
-                    OptimizedPerformance.enableButton(new Button[] { btnxoa, btnsua });
-                    txbtentrangthai.Text = "Hoạt động bình thường";
-                }
-                if (row.Cells["ngayxoaban"] != null)
-                {
-                    txbngayxoa.Text = row.Cells["ngayxoaban"].Value.ToString();
-                }
+            }
+            catch (Exception ex)
+            {
+                OptimizedPerformance.showSomeThingWentWrong();
+                OptimizedPerformance.log(ex);
             }
         }
         private void Btnclear_Click(object sender, EventArgs e)
@@ -381,38 +389,47 @@ namespace Viva_vegan.FormDashboard
         #region Tab Nhân Viên
         private async void Btnthemnhanvien_Click(object sender, EventArgs e)
         {
-            String manv =await new NhanVien().taoManv();
-            String macv = cbbmacv.Text;
-            String mabp = cbbmabp.Text;
-            String tennv = txttennv.Text;
-            String dienthoai = txtsodt.Text;
-            String email = txtemail.Text;
-            String diachi = txtdiachi.Text;
-            String sotk = txtsotk.Text;
-            String tendangnhap = txttendangnhap.Text;
-            String matkhau = OptimizedPerformance.encryptor(txtmatkhau.Text);
-            DateTime ngayvaolam = DateTime.Now;
-            if (String.IsNullOrWhiteSpace(macv) | String.IsNullOrWhiteSpace(mabp) | String.IsNullOrWhiteSpace(tennv)
-                | String.IsNullOrWhiteSpace(dienthoai) | String.IsNullOrWhiteSpace(email) | String.IsNullOrWhiteSpace(diachi)
-                | String.IsNullOrWhiteSpace(sotk))
+            try
             {
-                MessageBox.Show("Vui lòng không bỏ trống những trường có (*)");
-            }
-            else
-            {
-                String query = "themnhanvien @MANV @MACV @MABP @TENNV @DIENTHOAINV @EMAILNV @DIACHINV @SOTAIKHOANNV @TENDANGNHAP @MATKHAU @NGAYVAOLAM @REQUEST";
-                int res = ConnectDataBase.SessionConnect.executeNonQuery(query, new object[]
+                String manv = await new NhanVien().taoManv();
+                String macv = cbbmacv.Text;
+                String mabp = cbbmabp.Text;
+                String tennv = txttennv.Text;
+                String dienthoai = txtsodt.Text;
+                String email = txtemail.Text;
+                String diachi = txtdiachi.Text;
+                String sotk = txtsotk.Text;
+                String tendangnhap = txttendangnhap.Text;
+                DateTime ngayvaolamnv = dpngaysinhkh.Value;
+                String matkhau = OptimizedPerformance.encryptor(txtmatkhau.Text);
+                if (String.IsNullOrWhiteSpace(macv) | String.IsNullOrWhiteSpace(mabp) | String.IsNullOrWhiteSpace(tennv)
+                    | String.IsNullOrWhiteSpace(dienthoai) | String.IsNullOrWhiteSpace(email) | String.IsNullOrWhiteSpace(diachi)
+                    | String.IsNullOrWhiteSpace(sotk))
                 {
-                    manv,macv,mabp,tennv,dienthoai,email,diachi,sotk, tendangnhap,matkhau,ngayvaolam,"insert"
-                });
-                if (res > 0)
+                    MessageBox.Show("Vui lòng không bỏ trống những trường có (*)");
+                }
+                else
                 {
-                    OptimizedPerformance.SaveHistory(pnNhanvien, "them", dgvnhanvien);
-                    MessageBox.Show("Thành công");
-                    loadNhanVien("");
-                    btncleartextnhanvien.PerformClick();
+
+                    String query = "themnhanvien @MANV @MACV @MABP @TENNV @DIENTHOAINV @EMAILNV @DIACHINV @SOTAIKHOANNV @TENDANGNHAP @MATKHAU @NGAYVAOLAM @REQUEST";
+                    int res = ConnectDataBase.SessionConnect.executeNonQuery(query, new object[]
+                    {
+                    manv,macv,mabp,tennv,dienthoai,email,diachi,sotk, tendangnhap,matkhau,ngayvaolamnv,"insert"
+                    });
+                    if (res > 0)
+                    {
+                        OptimizedPerformance.SaveHistory(pnNhanvien, "them", dgvnhanvien);
+                        MessageBox.Show("Thành công");
+                        loadNhanVien("");
+                        btncleartextnhanvien.PerformClick();
+                    }
                 }
             }
+            catch (Exception x)
+            {
+                OptimizedPerformance.log(x);
+            }
+            
         }
         private void Txttimkiemnhanvien_KeyDown(object sender, KeyEventArgs e)
         {
@@ -428,11 +445,19 @@ namespace Viva_vegan.FormDashboard
         }
         private void Dgvnhanvien_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex != -1 && e.RowIndex < dgvnhanvien.RowCount-1)
+            if (e.RowIndex != -1 && e.RowIndex < dgvnhanvien.RowCount - 1)
             {
                 DataGridViewRow row = dgvnhanvien.Rows[e.RowIndex];
-                textBox3.Text= row.Cells["manv"].Value.ToString();
-                txbngayvaolam.Text = row.Cells["ngayvaolamnv"].Value.ToString();
+                textBox3.Text = row.Cells["manv"].Value.ToString();
+                try
+                {
+                    OptimizedPerformance.fromVNDateTimeStringToDateTime(row.Cells["ngayvaolamnv"].Value.ToString(),dpngayvaolamnv);
+                }
+                catch (Exception ex)
+                {
+                    OptimizedPerformance.showSomeThingWentWrong();
+                    OptimizedPerformance.log(ex);
+                }
                 cbbmacv.Text = row.Cells["macv"].Value.ToString();
                 cbbmabp.Text = row.Cells["mabp"].Value.ToString();
                 txttennv.Text = row.Cells["tennv"].Value.ToString();
@@ -440,13 +465,13 @@ namespace Viva_vegan.FormDashboard
                 txtdiachi.Text = row.Cells["diachinv"].Value.ToString();
                 txtsotk.Text = row.Cells["sotaikhoan"].Value.ToString();
                 txttendangnhap.Text = row.Cells["tendangnhapnv"].Value.ToString();
-                txtmatkhau.Text = row.Cells["matkhaunv"].Value.ToString();
+                txtmatkhau.Text = OptimizedPerformance.decriptor( row.Cells["matkhaunv"].Value.ToString());
                 txtsodt.Text = row.Cells["dienthoainv"].Value.ToString();
                 dgvnhanvien.Tag = row.Cells["manv"].Value.ToString();
                 string matrangthai = row.Cells["matrangthainv"].Value.ToString();
                 if (matrangthai == "elimi")
                 {
-                    txbghichunhanvien.Text = "Nhân viên đã rời khỏi\n\tVào ngày: "+ row.Cells["ngaynghiviec"].Value.ToString();
+                    txbghichunhanvien.Text = "Nhân viên đã rời khỏi\n\tVào ngày: " + row.Cells["ngaynghiviec"].Value.ToString();
                     OptimizedPerformance.disableButton(new Button[] { btnsuanhanvien, btnxoanhanvien });
                 }
                 else
@@ -458,7 +483,7 @@ namespace Viva_vegan.FormDashboard
         }
         private void IconButton1_Click(object sender, EventArgs e)  /// button xoa nhan vien
         {
-            OptimizedPerformance.SaveHistory(pnNhanvien,"xoa",dgvnhanvien);
+            OptimizedPerformance.SaveHistory(pnNhanvien, "xoa", dgvnhanvien);
             String manv = dgvnhanvien.Tag.ToString();
             String query = "xoanhanvien @manv";
             int res = ConnectDataBase.SessionConnect.executeNonQuery(query, new object[]
@@ -474,36 +499,46 @@ namespace Viva_vegan.FormDashboard
         }
         private void Btnsuanhanvien_Click(object sender, EventArgs e)
         {
-            OptimizedPerformance.SaveHistory(pnNhanvien,"sua",dgvnhanvien);
-            String manv = dgvnhanvien.Tag.ToString();
-            String macv = cbbmacv.Text;
-            String mabp = cbbmabp.Text;
-            String tennv = txttennv.Text;
-            String dienthoai = txtsodt.Text;
-            String email = txtemail.Text;
-            String diachi = txtdiachi.Text;
-            String sotk = txtsotk.Text;
-            String tendangnhap = txttendangnhap.Text;
-            String matkhau = txtmatkhau.Text;
-            if (String.IsNullOrWhiteSpace(macv) | String.IsNullOrWhiteSpace(mabp) | String.IsNullOrWhiteSpace(tennv)
-                | String.IsNullOrWhiteSpace(dienthoai) | String.IsNullOrWhiteSpace(email) | String.IsNullOrWhiteSpace(diachi)
-                | String.IsNullOrWhiteSpace(sotk))
+
+            try
             {
-                MessageBox.Show("Vui lòng không bỏ trống những trường có (*)");
-            }
-            else
-            {
-                String query = "themnhanvien @MANV @MACV @MABP @TENNV @DIENTHOAINV @EMAILNV @DIACHINV @SOTAIKHOANNV @TENDANGNHAP @MATKHAU @REQUEST";
-                int res = ConnectDataBase.SessionConnect.executeNonQuery(query, new object[]
+                OptimizedPerformance.SaveHistory(pnNhanvien, "sua", dgvnhanvien);
+                String manv = dgvnhanvien.Tag.ToString();
+                String macv = cbbmacv.Text;
+                String mabp = cbbmabp.Text;
+                String tennv = txttennv.Text;
+                String dienthoai = txtsodt.Text;
+                String email = txtemail.Text;
+                String diachi = txtdiachi.Text;
+                String sotk = txtsotk.Text;
+                String tendangnhap = txttendangnhap.Text;
+                DateTime ngayvaolamnv = dpngayvaolamnv.Value;
+                String matkhau = txtmatkhau.Text;
+                if (String.IsNullOrWhiteSpace(macv) | String.IsNullOrWhiteSpace(mabp) | String.IsNullOrWhiteSpace(tennv)
+                    | String.IsNullOrWhiteSpace(dienthoai) | String.IsNullOrWhiteSpace(email) | String.IsNullOrWhiteSpace(diachi)
+                    | String.IsNullOrWhiteSpace(sotk))
                 {
-                    manv,macv,mabp,tennv,dienthoai,email,diachi,sotk, tendangnhap,matkhau,"update"
-                });
-                if (res > 0)
-                {
-                    MessageBox.Show("Cập nhật thành công");
-                    loadNhanVien("");
-                    btncleartextnhanvien.PerformClick();
+                    MessageBox.Show("Vui lòng không bỏ trống những trường có (*)");
                 }
+                else
+                {
+                    String query = "themnhanvien @MANV @MACV @MABP @TENNV @DIENTHOAINV @EMAILNV @DIACHINV @SOTAIKHOANNV @TENDANGNHAP @MATKHAU @NGAYVAOLAM @REQUEST";
+                    int res = ConnectDataBase.SessionConnect.executeNonQuery(query, new object[]
+                    {
+                    manv,macv,mabp,tennv,dienthoai,email,diachi,sotk, tendangnhap,matkhau,ngayvaolamnv,"update"
+                    });
+                    if (res > 0)
+                    {
+                        MessageBox.Show("Cập nhật thành công");
+                        loadNhanVien("");
+                        btncleartextnhanvien.PerformClick();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                OptimizedPerformance.showSomeThingWentWrong();
+                OptimizedPerformance.log(ex);
             }
         }
         private void Btncleartextnhanvien_Click(object sender, EventArgs e)
@@ -520,7 +555,7 @@ namespace Viva_vegan.FormDashboard
             {
                 OpenFileDialog dialog = new OpenFileDialog();
                 dialog.Filter = "jpg files(.*jpg)|*.jpg| PNG files(.*png)|*.png| All Files(*.*)|*.*";
-                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) ;
+                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     lblpath.Text = dialog.FileName;
                     imgboxxemtruoc.ImageLocation = lblpath.Text.ToString();
@@ -619,7 +654,7 @@ namespace Viva_vegan.FormDashboard
                 | String.IsNullOrWhiteSpace(tenmon)
                 | String.IsNullOrWhiteSpace(dvt)
                 | String.IsNullOrWhiteSpace(giaban)
-                | String.IsNullOrWhiteSpace(mota))
+             )
             {
                 MessageBox.Show("Vui không bỏ trống những trường có (*) ");
             }
@@ -630,7 +665,6 @@ namespace Viva_vegan.FormDashboard
                 int result = ConnectDataBase.SessionConnect.executeNonQuery(query, new object[] {
                         mamon, tenmon, IntGiaban, mota, dvt, images, request
                     });
-                Console.WriteLine(result);
                 if (result >= 1)
                 {
                     MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
@@ -664,9 +698,15 @@ namespace Viva_vegan.FormDashboard
                 | String.IsNullOrWhiteSpace(tenmon)
                 | String.IsNullOrWhiteSpace(dvt)
                 | String.IsNullOrWhiteSpace(giaban)
-                | String.IsNullOrWhiteSpace(mota))
+                | string.IsNullOrWhiteSpace(lblpath.Text)
+              )
             {
-                MessageBox.Show("Vui không bỏ trống những trường có (*) ");
+                if (string.IsNullOrWhiteSpace(lblpath.Text))
+                {
+                    OptimizedPerformance.alertError("Select image from your PC");
+                }
+                else
+                    MessageBox.Show("Vui không bỏ trống những trường có (*) ");
             }
             else
             {
@@ -675,7 +715,6 @@ namespace Viva_vegan.FormDashboard
                 int result = ConnectDataBase.SessionConnect.executeNonQuery(query, new object[] {
                         mamon, tenmon, IntGiaban, mota, dvt, images, request
                     });
-                Console.WriteLine(result);
                 if (result >= 1)
                 {
                     MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
@@ -746,9 +785,9 @@ namespace Viva_vegan.FormDashboard
                     OptimizedPerformance.enableButton(new Button[] { btnsuathucuong, btnxoathucuong });
                     txbtrangthainuocuong.Text = "Vẫn còn phục vụ";
                 }
-                if (row.Cells["ngayxoathucuong"] !=null)
+                if (row.Cells["ngayxoathucuong"] != null)
                 {
-                   txbngayxoathucuong.Text = row.Cells["ngayxoathucuong"].Value.ToString();
+                    txbngayxoathucuong.Text = row.Cells["ngayxoathucuong"].Value.ToString();
 
                 }
             }
@@ -777,9 +816,15 @@ namespace Viva_vegan.FormDashboard
                 | String.IsNullOrWhiteSpace(tenmon)
                 | String.IsNullOrWhiteSpace(dvt)
                 | String.IsNullOrWhiteSpace(giaban)
-                | String.IsNullOrWhiteSpace(mota))
+                | string.IsNullOrWhiteSpace(lblpaththucuong.Text)
+                )
             {
-                MessageBox.Show("Vui không bỏ trống những trường có (*) ");
+                if (string.IsNullOrWhiteSpace(lblpaththucuong.Text))
+                {
+                    OptimizedPerformance.alertError("Select image from your PC");
+                }
+                else
+                    MessageBox.Show("Vui không bỏ trống những trường có (*) ");
             }
             else
             {
@@ -820,9 +865,9 @@ namespace Viva_vegan.FormDashboard
                 | String.IsNullOrWhiteSpace(tenmon)
                 | String.IsNullOrWhiteSpace(dvt)
                 | String.IsNullOrWhiteSpace(giaban)
-                | String.IsNullOrWhiteSpace(mota)
                 )
             {
+
                 MessageBox.Show("Vui không bỏ trống những trường có (*) ");
             }
             else
@@ -852,7 +897,7 @@ namespace Viva_vegan.FormDashboard
             {
                 OpenFileDialog dialog = new OpenFileDialog();
                 dialog.Filter = "jpg files(.*jpg)|*.jpg| PNG files(.*png)|*.png| All Files(*.*)|*.*";
-                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) ;
+                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     lblpaththucuong.Text = dialog.FileName;
                     pbthucuong.ImageLocation = lblpaththucuong.Text.ToString();
@@ -1066,7 +1111,15 @@ namespace Viva_vegan.FormDashboard
                 txbtenkh.Text = row.Cells["tenkh"].Value.ToString();
                 txbdienthoaikh.Text = row.Cells["dienthoaikh"].Value.ToString();
                 txbdiachikh.Text = row.Cells["diachikh"].Value.ToString();
-                dpngaysinhkh.Value = DateTime.Parse( row.Cells["ngaysinhkh"].Value.ToString());
+                try
+                {
+                    OptimizedPerformance.fromVNDateTimeStringToDateTime(row.Cells["ngaysinhkh"].Value.ToString(), dpngaysinhkh);
+                }
+                catch (Exception ex)
+                {
+                    OptimizedPerformance.showSomeThingWentWrong();
+                    OptimizedPerformance.log(ex);
+                }
                 txbemailkh.Text = row.Cells["emailkh"].Value.ToString();
                 txbdiemkh.Text = row.Cells["diemkh"].Value.ToString();
                 txbtiendatieukh.Text = row.Cells["tiendatieukh"].Value.ToString();
@@ -1074,7 +1127,7 @@ namespace Viva_vegan.FormDashboard
                 string matrangthai = row.Cells["matrangthaikh"].Value.ToString();
                 if (matrangthai == "elimi")
                 {
-                    txbghichukh.Text = "Đã xóa TK vào ngày "+ row.Cells["ngayhuytk"].Value.ToString();
+                    txbghichukh.Text = "Đã xóa TK vào ngày " + row.Cells["ngayhuytk"].Value.ToString();
                     OptimizedPerformance.disableButton(new Button[] { btnSuakh, btnXoakh });
                 }
                 else
@@ -1094,7 +1147,7 @@ namespace Viva_vegan.FormDashboard
             OptimizedPerformance.ClearAllText(this);
         }
 
-        private async void BtnTimKhachHang_Click(object sender, EventArgs e)
+        private void BtnTimKhachHang_Click(object sender, EventArgs e)
         {
             loadKhachHang(txbtimkiemkhachhang.Text);
         }
@@ -1111,7 +1164,7 @@ namespace Viva_vegan.FormDashboard
 
         private async void BtnThemkh_Click(object sender, EventArgs e)
         {
-            string makh = await new KhachHang().taoMaKh();
+            string makh = CTKMFunction.generateCode(5);
             string tenkh = txbtenkh.Text;
             string dienthoaikh = txbdienthoaikh.Text;
             string diachikh = txbdiachikh.Text;
@@ -1120,7 +1173,7 @@ namespace Viva_vegan.FormDashboard
             DateTime ngaydangky = DateTime.Now;
             if (string.IsNullOrWhiteSpace(makh) |
                 string.IsNullOrWhiteSpace(tenkh) |
-                string.IsNullOrWhiteSpace(dienthoaikh)|
+                string.IsNullOrWhiteSpace(dienthoaikh) |
                 string.IsNullOrWhiteSpace(diachikh) |
                 ngaysinhkh == null
                )
@@ -1129,22 +1182,29 @@ namespace Viva_vegan.FormDashboard
             }
             else
             {
-                String query = "thaotackhachhang @makh @tenkh @dienthoaikh @diachikh @ngaysinhkh @emailkh @ngaydangky @REQUEST";
-                int res = ConnectDataBase.SessionConnect.executeNonQuery(query, new object[]
+                if (!await (ConnectDataBase.SessionConnect.TrungSdtKhachHang(dienthoaikh)))
                 {
-                     makh,tenkh, dienthoaikh,diachikh,ngaysinhkh,emailkh,ngaydangky,"insert"
-                    //manv,macv,mabp,tennv,dienthoai,email,diachi,sotk, tendangnhap,matkhau,ngayvaolam,"insert"
-                });
-                if (res > 0)
-                {
-                    txbmakh.Text = makh;
-                    txbloaikh.Text = "GREEN";
-                    txbdiemkh.Text = "0";
+                    String query = "thaotackhachhang @makh @tenkh @dienthoaikh @diachikh @ngaysinhkh @emailkh @maloaikh @ngaydangky @matrangthai @REQUEST";
+                    int res = ConnectDataBase.SessionConnect.executeNonQuery(query, new object[]
+                    {
+                     makh,tenkh, dienthoaikh,diachikh,ngaysinhkh,emailkh,"GREEN",ngaydangky,"activ","insert"
+                        //manv,macv,mabp,tennv,dienthoai,email,diachi,sotk, tendangnhap,matkhau,ngayvaolam,"insert"
+                    });
+                    if (res > 0)
+                    {
+                        txbmakh.Text = makh;
+                        txbloaikh.Text = "GREEN";
+                        txbdiemkh.Text = "0";
 
-                    OptimizedPerformance.SaveHistory(pnKhachhang, "them", dgvnhanvien);
-                    MessageBox.Show("Thành công");
-                    loadKhachHang("");
-                    btnClearTextKh.PerformClick();
+                        OptimizedPerformance.SaveHistory(pnKhachhang, "them", dgvnhanvien);
+                        MessageBox.Show("Thành công");
+                        loadKhachHang("");
+                        btnClearTextKh.PerformClick();
+                    }
+                }
+                else
+                {
+                    OptimizedPerformance.alertError("Số điện thoại đã tồn tại");
                 }
             }
         }
@@ -1173,6 +1233,44 @@ namespace Viva_vegan.FormDashboard
                 loadKhachHang("");
                 btnClearTextKh.PerformClick();
             }
+        }
+
+        private void BtnSuakh_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OptimizedPerformance.SaveHistory(pnKhachhang, "sua", dgvKhachhang);
+                String makh = dgvKhachhang.Tag.ToString();
+                String tenkh = txbtenkh.Text;
+                String dienthoaikh = txbdienthoaikh.Text;
+                String diachikh = txbdiachikh.Text;
+                DateTime ngaysinhkh = dpngaysinhkh.Value;
+                String email = txbemailkh.Text;
+                if (String.IsNullOrWhiteSpace(makh) | String.IsNullOrWhiteSpace(tenkh) | String.IsNullOrWhiteSpace(email)
+                    | String.IsNullOrWhiteSpace(dienthoaikh) | String.IsNullOrWhiteSpace(email))
+                {
+                    MessageBox.Show("Vui lòng không bỏ trống những trường có (*)");
+                }
+                else
+                {
+                    String query = "thaotackhachhang @MAKH @TENKH @DIENTHOAIKH @DIACHIKH @NGAYSINHKH @EMAILKH @DIEM @TIENDATIEU @MALOAIKH @ngaydangky @matrangthai @Request";
+                    int res = ConnectDataBase.SessionConnect.executeNonQuery(query, new object[]
+                    {
+                    makh,tenkh,dienthoaikh,diachikh,ngaysinhkh,email,0,0, "",null,"","update"
+                    });
+                    if (res > 0)
+                    {
+                        MessageBox.Show("Cập nhật khách hàng thành công");
+                        loadKhachHang("");
+                        btncleartextnhanvien.PerformClick();
+                    }
+                }
+            }
+            catch (Exception x)
+            {
+                OptimizedPerformance.alertError(x.Message);
+            }
+
         }
     }
 }

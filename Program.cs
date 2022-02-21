@@ -11,11 +11,14 @@ namespace Viva_vegan
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
+        public static Form MainForm = null;
+        /// 
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            MainForm = new Login();
             Application.Run(new Login());
         }
     }

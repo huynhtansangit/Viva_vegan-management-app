@@ -60,10 +60,10 @@ namespace Viva_vegan.FormDashboard.BaoCaoChild
                 Console.Write(_sohd.ToString());
             }
         }
-        private void CrystalReportViewer1_Load(object sender, EventArgs e)
+        private async void CrystalReportViewer1_Load(object sender, EventArgs e)
         {
             List<HoaDon> hds = new HoaDon().getListHoaDon();
-            List<MonAn> mas = new MonAn().GetMonAns();
+            List<MonAn> mas =await new MonAn().GetMonAns();
             List<ThucUong> tus = new ThucUong().GetThucUongs();
             List<NhanVien> nvs = new NhanVien().getListNhanVien();
             List<BestSellerFood> bestSellerFoods = new BestSellerFood().GetBestSellerFoods(tungay, denngay);

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
@@ -9,12 +10,13 @@ namespace Viva_vegan.ClassCSharp
 {
     class ConnectDataBase
     {
+        Entities1 qlnh = new Entities1();
         private SqlConnection connection;
         private String stringConnect;
-        private static String path = Path.GetFullPath(Environment.CurrentDirectory);
-        private static String nameDB = "QLNH30-08.mdf";
-        //private String stringAvailable = @"Data Source=(Localdb)\MSSQLLocalDB;AttachDbFilename=" + path+@"\"+ nameDB + ";Integrated Security=True";
-
+        private static string path = Path.GetFullPath(Environment.CurrentDirectory);
+        private static string nameDB = "QLNH30-08.mdf";
+        //private string stringAvailable = @"Data Source=(Localdb)\MSSQLLocalDB;AttachDbFilename=" + path + @"\" + nameDB + ";Integrated Security=SSPI";
+        //<add name="CONNECTION-NAME" connectionString="metadata=res://*/DBModel.csdl|res://*/DBModel.ssdl|res://*/DBM‌​odel.msl;provider=System.Data.SqlClient;provider connection string=&quot;Data Source=NAME-OF-MY-COMPUTER\sqlexpress;AttachDbFilename=|DataDirectory|\MyDBFile.mdf;Initial Catalog=DATABASE-NAME;Integrated Security=True;MultipleActiveResultSets=True&quot;" providerName="System.Data.EntityClient" />
         private String stringAvailable = @"Data Source=DESKTOP-S418B85\SQLEXPRESS;Initial Catalog=QLNH30-08;Integrated Security=True";
 
         private static ConnectDataBase sessionConnect;
@@ -32,164 +34,260 @@ namespace Viva_vegan.ClassCSharp
         #endregion
         public ConnectDataBase( string stringConnect)
         {
-            // Truyền vào chuỗi rỗng thì lấy chuỗi string có sẵn để kết nối
-            if (String.IsNullOrWhiteSpace(stringConnect))
+            try
             {
-                this.connection = new SqlConnection(this.stringAvailable);
-                this.stringConnect = this.stringAvailable;
+                // Truyền vào chuỗi rỗng thì lấy chuỗi string có sẵn để kết nối
+                if (String.IsNullOrWhiteSpace(stringConnect))
+                {
+                    this.connection = new SqlConnection(this.stringAvailable);
+                    this.stringConnect = this.stringAvailable;
+                }
+                // Không thì lấy chuỗi string truyền vào để kết nối.
+                else
+                {
+                    this.connection = new SqlConnection(stringConnect);
+                    this.stringConnect = stringConnect;
+                }
             }
-            // Không thì lấy chuỗi string truyền vào để kết nối.
-            else
+            catch (Exception ex)
             {
-                this.connection = new SqlConnection(stringConnect);
-                this.stringConnect = stringConnect;
+                OptimizedPerformance.showSomeThingWentWrong();
+                OptimizedPerformance.log(ex);
             }
         }
         //Asyn function executeQuery
+        // Asyncronous -> bất đồng bộ
         public async Task<DataTable> executeQueryAsync(String query, Object[] paramaters = null)
         {
-            DataTable table = new DataTable();
-            using (SqlConnection conn = new SqlConnection(this.stringAvailable))
-            {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand(query, conn);
 
-                if (paramaters != null)
+            try
+            {
+                DataTable table = new DataTable();
+                using (SqlConnection conn = new SqlConnection(this.stringAvailable))
                 {
-                    String[] listParams = query.Split(' ');
-                    cmd = new SqlCommand(listParams[0], conn);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    int i = 0;
-                    foreach (String item in listParams)
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(query, conn);
+
+                    if (paramaters != null)
                     {
-                        if (item.Contains('@'))
+                        String[] listParams = query.Split(' ');
+                        cmd = new SqlCommand(listParams[0], conn);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        int i = 0;
+                        foreach (String item in listParams)
                         {
-                            cmd.Parameters.AddWithValue(item, paramaters[i]);
-                            i++;
+                            if (item.Contains('@'))
+                            {
+                                cmd.Parameters.AddWithValue(item, paramaters[i]);
+                                i++;
+                            }
                         }
                     }
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    await Task.Run(() => adapter.Fill(table));
+                    //đợi tau chạy xong đã
+                    conn.Close();
                 }
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                await Task.Run(() => adapter.Fill(table));
-                conn.Close();
+                return table;
             }
-            return table;
+            catch (Exception ex)
+            {
+                OptimizedPerformance.showSomeThingWentWrong();
+                OptimizedPerformance.log(ex);
+                return null;
+            }
         }
         public DataTable executeQuery (String query, Object [] paramaters=null)
         {
-            DataTable table = new DataTable();
-            using (SqlConnection conn = new SqlConnection(this.stringAvailable))
+
+            try
             {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand(query, conn);
-                
-                if(paramaters!=null)
+                DataTable table = new DataTable();
+                using (SqlConnection conn = new SqlConnection(this.stringAvailable))
                 {
-                 
-                    String[] listParams = query.Split(' ');
-                    cmd = new SqlCommand(listParams[0], conn);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    int i = 0;
-                    foreach (String item in listParams)
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(query, conn);
+
+                    if (paramaters != null)
                     {
-                        if(item.Contains('@'))
+
+                        String[] listParams = query.Split(' ');
+                        cmd = new SqlCommand(listParams[0], conn);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        int i = 0;
+                        foreach (String item in listParams)
                         {
-                            cmd.Parameters.AddWithValue(item, paramaters[i]);
-                            i++;
+                            if (item.Contains('@'))
+                            {
+                                cmd.Parameters.AddWithValue(item, paramaters[i]);
+                                i++;
+                            }
                         }
                     }
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(table);
+                    conn.Close();
                 }
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                adapter.Fill(table);
-                conn.Close();
+                return table;
             }
-            return table;
+            catch (Exception ex)
+            {
+                OptimizedPerformance.showSomeThingWentWrong();
+                OptimizedPerformance.log(ex);
+                return null;
+            }
         }
         public DataTable executeQueryNoProc(String query, Object[] paramaters = null)
         {
-            DataTable table = new DataTable();
-            using (SqlConnection conn = new SqlConnection(this.stringAvailable))
+            try
             {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand(query, conn);
-
-                if (paramaters != null)
+                DataTable table = new DataTable();
+                using (SqlConnection conn = new SqlConnection(this.stringAvailable))
                 {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(query, conn);
 
-                    String[] listParams = query.Split(' ');
-                    cmd = new SqlCommand(query, conn);
-                    cmd.CommandType = CommandType.Text;
-                    int i = 0;
-                    foreach (String item in listParams)
+                    if (paramaters != null)
                     {
-                        if (item.Contains('@'))
+
+                        String[] listParams = query.Split(' ');
+                        cmd = new SqlCommand(query, conn);
+                        cmd.CommandType = CommandType.Text;
+                        int i = 0;
+                        foreach (String item in listParams)
                         {
-                            cmd.Parameters.AddWithValue(item, paramaters[i]);
-                            i++;
+                            if (item.Contains('@'))
+                            {
+                                cmd.Parameters.AddWithValue(item, paramaters[i]);
+                                i++;
+                            }
                         }
                     }
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(table);
+                    conn.Close();
                 }
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                adapter.Fill(table);
-                conn.Close();
+                return table;
             }
-            return table;
+            catch (Exception ex)
+            {
+                OptimizedPerformance.showSomeThingWentWrong();
+                OptimizedPerformance.log(ex);
+                return null;
+            }
+            
         }
         // trả về số bảng ghi truy vấn thành công
         public int executeNonQuery(String query, Object[] paramaters = null)
         {
-            int data = 0;
-            using (SqlConnection conn = new SqlConnection(stringAvailable))
+            try
             {
-                conn.Open();
-                SqlCommand cmd= cmd = new SqlCommand(query, conn);
-                if (paramaters != null)
+                int data = 0;
+                using (SqlConnection conn = new SqlConnection(stringAvailable))
                 {
-                    String[] listParams = query.Split(' ');
-                    cmd = new SqlCommand(listParams[0], conn);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    int i = 0;
-                    foreach (String item in listParams)
+                    conn.Open();
+                    SqlCommand cmd = cmd = new SqlCommand(query, conn);
+                    if (paramaters != null)
                     {
-                        if (item.Contains('@'))
+                        String[] listParams = query.Split(' ');
+                        cmd = new SqlCommand(listParams[0], conn);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        int i = 0;
+                        foreach (String item in listParams)
                         {
-                            cmd.Parameters.AddWithValue(item, paramaters[i]);
-                            i++;
+                            if (item.Contains('@'))
+                            {
+                                cmd.Parameters.AddWithValue(item, paramaters[i]);
+                                i++;
+                            }
                         }
                     }
+                    data = cmd.ExecuteNonQuery();
+                    conn.Close();
                 }
-                data = cmd.ExecuteNonQuery();
-                conn.Close();
+                return data;
             }
-            return data;
+            catch (Exception ex)
+            {
+                OptimizedPerformance.showSomeThingWentWrong();
+                OptimizedPerformance.log(ex);
+                return -1;
+            }
+        }
+        public async Task<int> executeNonQueryAsync(String query, Object[] paramaters = null)
+        {
+
+            try
+            {
+                int data = 0;
+                using (SqlConnection conn = new SqlConnection(stringAvailable))
+                {
+                    conn.Open();
+                    SqlCommand cmd = cmd = new SqlCommand(query, conn);
+                    if (paramaters != null)
+                    {
+                        String[] listParams = query.Split(' ');
+                        cmd = new SqlCommand(listParams[0], conn);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        int i = 0;
+                        foreach (String item in listParams)
+                        {
+                            if (item.Contains('@'))
+                            {
+                                cmd.Parameters.AddWithValue(item, paramaters[i]);
+                                i++;
+                            }
+                        }
+                    }
+                    await Task.Run(() => data = cmd.ExecuteNonQuery());
+                    conn.Close();
+                }
+                return data;
+            }
+            catch (Exception ex)
+            {
+                OptimizedPerformance.showSomeThingWentWrong();
+                OptimizedPerformance.log(ex);
+                return -1;
+            }
         }
         // trả về giá trị đầu tiên của bảng.
         public object executeScalar(String query, Object[] paramaters = null) //select count (*)
         {
-            object data = 0;
-            using (SqlConnection conn = new SqlConnection(stringAvailable))
+
+            try
             {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand(query, conn);
-                int i = 0;
-                if (paramaters != null)
+                object data = 0;
+                using (SqlConnection conn = new SqlConnection(stringAvailable))
                 {
-                    String[] listParams = query.Split(' ');
-                    cmd = new SqlCommand(listParams[0], conn);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    foreach (String item in listParams)
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    int i = 0;
+                    if (paramaters != null)
                     {
-                        if (item.Contains("@"))
+                        String[] listParams = query.Split(' ');
+                        cmd = new SqlCommand(listParams[0], conn);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        foreach (String item in listParams)
                         {
-                            cmd.Parameters.AddWithValue(item, paramaters[i]);
-                            i++;
+                            if (item.Contains("@"))
+                            {
+                                cmd.Parameters.AddWithValue(item, paramaters[i]);
+                                i++;
+                            }
                         }
                     }
+                    data = cmd.ExecuteScalar();
+                    conn.Close();
                 }
-                data = cmd.ExecuteScalar();
-                conn.Close();
+                return data;
             }
-            return data;
+            catch (Exception ex)
+            {
+                OptimizedPerformance.showSomeThingWentWrong();
+                OptimizedPerformance.log(ex);
+                return -1;
+            }
         }
         public async Task<object> executeScalarAsync(String query, Object[] paramaters = null) //select count (*)
         {
@@ -258,6 +356,29 @@ namespace Viva_vegan.ClassCSharp
         {
             this.stringConnect = temp;
         }
-        
+        public async Task<bool> TrungSdtKhachHang (string sdt)
+        {
+            string query = "select * from khachhang where dienthoaikh='" + sdt + "'";
+            int res =await ConnectDataBase.SessionConnect.executeNonQueryAsync(query);
+            Console.WriteLine(res);
+            if (res > 0)
+            {
+                return true;
+            }
+            else return false;
+        }
+        public DateTime GetNgaySinhKh (string makh)
+        {
+            try
+            {
+                List<KHACHHANG> khs = qlnh.KHACHHANGs.Where(x => x.MAKH == makh).ToList();
+                return khs[0].NGAYSINHKH;
+            }
+            catch(Exception x)
+            {
+                Console.WriteLine(x.Message);
+            }
+            return DateTime.Now;
+        }
     }
 }

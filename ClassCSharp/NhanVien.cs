@@ -72,7 +72,6 @@ namespace Viva_vegan.ClassCSharp
             // lỗi -> solution lấy cột mã nhân viên -> tách 2 số cuối
             //-> tìm số lớn nhất -> cộng 1 tạo thành mã nv
             string query = "select manv from nhanvien";
-            string result = "";
             int max= 0;
             DataTable table =await ConnectDataBase.SessionConnect.executeQueryAsync(query);
             foreach(DataRow row in table.Rows)

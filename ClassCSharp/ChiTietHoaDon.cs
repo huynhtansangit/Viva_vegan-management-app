@@ -12,16 +12,14 @@ namespace Viva_vegan.ClassCSharp
         private String mahd;
         private String mamon;
         private String tenmon;
-        private String makm;
         private String dvt;
         private int soluong;
         private int dongia;
 
-        public ChiTietHoaDon(string mahd, string mamon, string makm, int soluong,String tenmon,int dongia,string dvt)
+        public ChiTietHoaDon(string mahd, string mamon, int soluong,String tenmon,int dongia,string dvt)
         {
             this.mahd = mahd;
             this.mamon = mamon;
-            this.makm = makm;
             this.soluong = soluong;
             this.tenmon = tenmon;
             this.dongia = dongia;
@@ -37,7 +35,6 @@ namespace Viva_vegan.ClassCSharp
             {
                 this.mahd = row["MAHD"].ToString(); ;
                 this.mamon = row["MAMON"].ToString();
-                this.makm = row["MAKM"].ToString();
                 this.soluong = Convert.ToInt16(row["SOLUONG"]);
                 this.tenmon = row["TENMON"].ToString();
                 this.dongia = Convert.ToInt32(row["GIABAN"]);
@@ -47,7 +44,6 @@ namespace Viva_vegan.ClassCSharp
             {
                 this.mahd = row["MAHD"].ToString(); ;
                 this.mamon = row["MATHUCUONG"].ToString();
-                this.makm = row["MAKM"].ToString();
                 this.soluong = Convert.ToInt16(row["SOLUONG"]);
                 this.tenmon = row["TENTHUCUONG"].ToString();
                 this.dongia = Convert.ToInt32(row["GIABAN"]);
@@ -57,7 +53,6 @@ namespace Viva_vegan.ClassCSharp
 
         public string Mahd { get => mahd; set => mahd = value; }
         public string Mamon { get => mamon; set => mamon = value; }
-        public string Makm { get => makm; set => makm = value; }
         public int Soluong { get => soluong; set => soluong = value; }
         public string Tenmon { get => tenmon; set => tenmon = value; }
         public int Dongia { get => dongia; set => dongia = value; }
@@ -87,10 +82,10 @@ namespace Viva_vegan.ClassCSharp
         public int insertChiTietHoaDon (String kind)
         {
             int res = 0;
-            String query = "thaotacchitiethoadon @mahd @mamon @makm @soluong @request";
+            String query = "thaotacchitiethoadon @mahd @mamon @soluong @request";
             res = ConnectDataBase.SessionConnect.executeNonQuery(query, new object[]
             {
-                Mahd,Mamon,Makm,Soluong,kind
+                Mahd,Mamon,Soluong,kind
             });
             return res;
         }

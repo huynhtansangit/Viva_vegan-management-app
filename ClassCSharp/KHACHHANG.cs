@@ -62,7 +62,6 @@ namespace Viva_vegan.ClassCSharp
         public async Task<string> taoMaKh ()
         {
             string query = "select makh from khachhang";
-            string result = "";
             int max = 0;
             DataTable table = await ConnectDataBase.SessionConnect.executeQueryAsync(query);
             foreach (DataRow row in table.Rows)

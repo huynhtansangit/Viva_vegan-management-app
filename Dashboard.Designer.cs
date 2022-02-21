@@ -28,25 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.pnNavi = new System.Windows.Forms.Panel();
-            this.pndesktop = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pnTop = new System.Windows.Forms.Panel();
-            this.lbltenformhientai = new System.Windows.Forms.Label();
-            this.lblTime = new System.Windows.Forms.Label();
-            this.lblDate = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnhelp = new FontAwesome.Sharp.IconButton();
-            this.btnlogout = new FontAwesome.Sharp.IconButton();
-            this.iconFormhientai = new FontAwesome.Sharp.IconPictureBox();
-            this.iconButton6 = new FontAwesome.Sharp.IconButton();
-            this.btninsta = new FontAwesome.Sharp.IconButton();
-            this.btntwitter = new FontAwesome.Sharp.IconButton();
-            this.btnfacebook = new FontAwesome.Sharp.IconButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnthongtin = new FontAwesome.Sharp.IconButton();
             this.btnbaocao = new FontAwesome.Sharp.IconButton();
             this.btnhoatdong = new FontAwesome.Sharp.IconButton();
@@ -54,6 +38,24 @@
             this.btnbieudo = new FontAwesome.Sharp.IconButton();
             this.btnbangdieukhien = new FontAwesome.Sharp.IconButton();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pndesktop = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pnTop = new System.Windows.Forms.Panel();
+            this.btnhelp = new FontAwesome.Sharp.IconButton();
+            this.btnlogout = new FontAwesome.Sharp.IconButton();
+            this.lbltenformhientai = new System.Windows.Forms.Label();
+            this.iconFormhientai = new FontAwesome.Sharp.IconPictureBox();
+            this.iconButton6 = new FontAwesome.Sharp.IconButton();
+            this.btninsta = new FontAwesome.Sharp.IconButton();
+            this.btntwitter = new FontAwesome.Sharp.IconButton();
+            this.btnfacebook = new FontAwesome.Sharp.IconButton();
+            this.lblTime = new System.Windows.Forms.Label();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.timerCheckExpire = new System.Windows.Forms.Timer(this.components);
             this.pnNavi.SuspendLayout();
             this.pndesktop.SuspendLayout();
             this.pnTop.SuspendLayout();
@@ -76,6 +78,154 @@
             this.pnNavi.Name = "pnNavi";
             this.pnNavi.Size = new System.Drawing.Size(286, 578);
             this.pnNavi.TabIndex = 0;
+            // 
+            // btnthongtin
+            // 
+            this.btnthongtin.FlatAppearance.BorderSize = 0;
+            this.btnthongtin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnthongtin.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnthongtin.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnthongtin.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnthongtin.IconChar = FontAwesome.Sharp.IconChar.Info;
+            this.btnthongtin.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnthongtin.IconSize = 35;
+            this.btnthongtin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnthongtin.Location = new System.Drawing.Point(0, 491);
+            this.btnthongtin.Name = "btnthongtin";
+            this.btnthongtin.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnthongtin.Rotation = 0D;
+            this.btnthongtin.Size = new System.Drawing.Size(277, 46);
+            this.btnthongtin.TabIndex = 15;
+            this.btnthongtin.Text = "   Thông tin của tôi";
+            this.btnthongtin.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnthongtin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnthongtin.UseVisualStyleBackColor = true;
+            this.btnthongtin.Click += new System.EventHandler(this.Btnthongtin_Click);
+            // 
+            // btnbaocao
+            // 
+            this.btnbaocao.FlatAppearance.BorderSize = 0;
+            this.btnbaocao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnbaocao.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnbaocao.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnbaocao.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnbaocao.IconChar = FontAwesome.Sharp.IconChar.Calculator;
+            this.btnbaocao.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnbaocao.IconSize = 35;
+            this.btnbaocao.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnbaocao.Location = new System.Drawing.Point(0, 427);
+            this.btnbaocao.Name = "btnbaocao";
+            this.btnbaocao.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnbaocao.Rotation = 0D;
+            this.btnbaocao.Size = new System.Drawing.Size(277, 46);
+            this.btnbaocao.TabIndex = 14;
+            this.btnbaocao.Text = "   Báo cáo";
+            this.btnbaocao.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnbaocao.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnbaocao.UseVisualStyleBackColor = true;
+            this.btnbaocao.Click += new System.EventHandler(this.Btnthanhtoan_Click);
+            // 
+            // btnhoatdong
+            // 
+            this.btnhoatdong.FlatAppearance.BorderSize = 0;
+            this.btnhoatdong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnhoatdong.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnhoatdong.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnhoatdong.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnhoatdong.IconChar = FontAwesome.Sharp.IconChar.Tag;
+            this.btnhoatdong.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnhoatdong.IconSize = 35;
+            this.btnhoatdong.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnhoatdong.Location = new System.Drawing.Point(0, 363);
+            this.btnhoatdong.Name = "btnhoatdong";
+            this.btnhoatdong.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnhoatdong.Rotation = 0D;
+            this.btnhoatdong.Size = new System.Drawing.Size(277, 46);
+            this.btnhoatdong.TabIndex = 13;
+            this.btnhoatdong.Text = "   Chương trình KM";
+            this.btnhoatdong.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnhoatdong.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnhoatdong.UseVisualStyleBackColor = true;
+            this.btnhoatdong.Click += new System.EventHandler(this.Btnhoatdong_Click);
+            // 
+            // btngoimon
+            // 
+            this.btngoimon.FlatAppearance.BorderSize = 0;
+            this.btngoimon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btngoimon.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btngoimon.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btngoimon.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btngoimon.IconChar = FontAwesome.Sharp.IconChar.Utensils;
+            this.btngoimon.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btngoimon.IconSize = 35;
+            this.btngoimon.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btngoimon.Location = new System.Drawing.Point(0, 299);
+            this.btngoimon.Name = "btngoimon";
+            this.btngoimon.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btngoimon.Rotation = 0D;
+            this.btngoimon.Size = new System.Drawing.Size(277, 46);
+            this.btngoimon.TabIndex = 12;
+            this.btngoimon.Text = "   Gọi món";
+            this.btngoimon.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btngoimon.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btngoimon.UseVisualStyleBackColor = true;
+            this.btngoimon.Click += new System.EventHandler(this.Btngoimon_Click);
+            // 
+            // btnbieudo
+            // 
+            this.btnbieudo.FlatAppearance.BorderSize = 0;
+            this.btnbieudo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnbieudo.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnbieudo.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnbieudo.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnbieudo.IconChar = FontAwesome.Sharp.IconChar.ChartBar;
+            this.btnbieudo.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnbieudo.IconSize = 35;
+            this.btnbieudo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnbieudo.Location = new System.Drawing.Point(0, 235);
+            this.btnbieudo.Name = "btnbieudo";
+            this.btnbieudo.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnbieudo.Rotation = 0D;
+            this.btnbieudo.Size = new System.Drawing.Size(277, 46);
+            this.btnbieudo.TabIndex = 11;
+            this.btnbieudo.Text = "   Biểu đồ doanh thu";
+            this.btnbieudo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnbieudo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnbieudo.UseVisualStyleBackColor = true;
+            this.btnbieudo.Click += new System.EventHandler(this.Btnbieudo_Click);
+            // 
+            // btnbangdieukhien
+            // 
+            this.btnbangdieukhien.FlatAppearance.BorderSize = 0;
+            this.btnbangdieukhien.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnbangdieukhien.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnbangdieukhien.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnbangdieukhien.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnbangdieukhien.IconChar = FontAwesome.Sharp.IconChar.Chalkboard;
+            this.btnbangdieukhien.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnbangdieukhien.IconSize = 35;
+            this.btnbangdieukhien.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnbangdieukhien.Location = new System.Drawing.Point(0, 171);
+            this.btnbangdieukhien.Name = "btnbangdieukhien";
+            this.btnbangdieukhien.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnbangdieukhien.Rotation = 0D;
+            this.btnbangdieukhien.Size = new System.Drawing.Size(277, 46);
+            this.btnbangdieukhien.TabIndex = 10;
+            this.btnbangdieukhien.Text = "   Bảng điều khiển";
+            this.btnbangdieukhien.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnbangdieukhien.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnbangdieukhien.UseVisualStyleBackColor = true;
+            this.btnbangdieukhien.Click += new System.EventHandler(this.Btnbangdieukhien_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.BackgroundImage = global::Viva_vegan.Properties.Resources.logo_transparent2;
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(286, 128);
+            this.panel2.TabIndex = 9;
             // 
             // pndesktop
             // 
@@ -127,99 +277,6 @@
             this.pnTop.Size = new System.Drawing.Size(914, 47);
             this.pnTop.TabIndex = 12;
             // 
-            // lbltenformhientai
-            // 
-            this.lbltenformhientai.AutoSize = true;
-            this.lbltenformhientai.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbltenformhientai.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.lbltenformhientai.Location = new System.Drawing.Point(40, 13);
-            this.lbltenformhientai.Name = "lbltenformhientai";
-            this.lbltenformhientai.Size = new System.Drawing.Size(52, 18);
-            this.lbltenformhientai.TabIndex = 17;
-            this.lbltenformhientai.Text = "Home";
-            // 
-            // lblTime
-            // 
-            this.lblTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblTime.AutoSize = true;
-            this.lblTime.BackColor = System.Drawing.Color.Transparent;
-            this.lblTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblTime.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTime.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblTime.Location = new System.Drawing.Point(14, 549);
-            this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(78, 20);
-            this.lblTime.TabIndex = 11;
-            this.lblTime.Text = "date:time";
-            this.lblTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblTime.Click += new System.EventHandler(this.LblTime_Click);
-            // 
-            // lblDate
-            // 
-            this.lblDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblDate.AutoSize = true;
-            this.lblDate.BackColor = System.Drawing.Color.Transparent;
-            this.lblDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblDate.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblDate.Location = new System.Drawing.Point(14, 520);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(78, 20);
-            this.lblDate.TabIndex = 10;
-            this.lblDate.Text = "date:time";
-            this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label4.Font = new System.Drawing.Font("Cooper Black", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label4.Location = new System.Drawing.Point(12, 208);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(216, 31);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "APPLICATION";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label3.Font = new System.Drawing.Font("Cooper Black", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label3.Location = new System.Drawing.Point(12, 172);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(268, 36);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "MANAGEMENT";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label2.Font = new System.Drawing.Font("Cooper Black", 30F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label2.Location = new System.Drawing.Point(10, 126);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(324, 46);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "RESTAURANT";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // btnhelp
             // 
             this.btnhelp.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -255,6 +312,17 @@
             this.btnlogout.TabIndex = 18;
             this.btnlogout.UseVisualStyleBackColor = true;
             this.btnlogout.Click += new System.EventHandler(this.Btnlogout_Click);
+            // 
+            // lbltenformhientai
+            // 
+            this.lbltenformhientai.AutoSize = true;
+            this.lbltenformhientai.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbltenformhientai.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.lbltenformhientai.Location = new System.Drawing.Point(40, 13);
+            this.lbltenformhientai.Name = "lbltenformhientai";
+            this.lbltenformhientai.Size = new System.Drawing.Size(52, 18);
+            this.lbltenformhientai.TabIndex = 17;
+            this.lbltenformhientai.Text = "Home";
             // 
             // iconFormhientai
             // 
@@ -341,163 +409,100 @@
             this.btnfacebook.UseVisualStyleBackColor = true;
             this.btnfacebook.Click += new System.EventHandler(this.Btnfacebook_Click_1);
             // 
+            // lblTime
+            // 
+            this.lblTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblTime.AutoSize = true;
+            this.lblTime.BackColor = System.Drawing.Color.Transparent;
+            this.lblTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblTime.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTime.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblTime.Location = new System.Drawing.Point(14, 549);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(78, 20);
+            this.lblTime.TabIndex = 11;
+            this.lblTime.Text = "date:time";
+            this.lblTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTime.Click += new System.EventHandler(this.LblTime_Click);
+            // 
+            // lblDate
+            // 
+            this.lblDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblDate.AutoSize = true;
+            this.lblDate.BackColor = System.Drawing.Color.Transparent;
+            this.lblDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblDate.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblDate.Location = new System.Drawing.Point(14, 520);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(78, 20);
+            this.lblDate.TabIndex = 10;
+            this.lblDate.Text = "date:time";
+            this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label4.Font = new System.Drawing.Font("Cooper Black", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label4.Location = new System.Drawing.Point(12, 208);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(216, 31);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "APPLICATION";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label3.Font = new System.Drawing.Font("Cooper Black", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label3.Location = new System.Drawing.Point(12, 172);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(268, 36);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "MANAGEMENT";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label2.Font = new System.Drawing.Font("Cooper Black", 30F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label2.Location = new System.Drawing.Point(10, 126);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(324, 46);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "RESTAURANT";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackgroundImage = global::Viva_vegan.Properties.Resources.transparent_bugger_chay1;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(409, -27);
+            this.pictureBox1.Location = new System.Drawing.Point(388, -83);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(380, 634);
+            this.pictureBox1.Size = new System.Drawing.Size(437, 847);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // btnthongtin
-            // 
-            this.btnthongtin.FlatAppearance.BorderSize = 0;
-            this.btnthongtin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnthongtin.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnthongtin.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnthongtin.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnthongtin.IconChar = FontAwesome.Sharp.IconChar.Info;
-            this.btnthongtin.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnthongtin.IconSize = 35;
-            this.btnthongtin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnthongtin.Location = new System.Drawing.Point(0, 491);
-            this.btnthongtin.Name = "btnthongtin";
-            this.btnthongtin.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnthongtin.Rotation = 0D;
-            this.btnthongtin.Size = new System.Drawing.Size(277, 46);
-            this.btnthongtin.TabIndex = 15;
-            this.btnthongtin.Text = "   Thông tin của tôi";
-            this.btnthongtin.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnthongtin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnthongtin.UseVisualStyleBackColor = true;
-            this.btnthongtin.Click += new System.EventHandler(this.Btnthongtin_Click);
-            // 
-            // btnbaocao
-            // 
-            this.btnbaocao.FlatAppearance.BorderSize = 0;
-            this.btnbaocao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnbaocao.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnbaocao.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnbaocao.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnbaocao.IconChar = FontAwesome.Sharp.IconChar.Calculator;
-            this.btnbaocao.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnbaocao.IconSize = 35;
-            this.btnbaocao.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnbaocao.Location = new System.Drawing.Point(0, 427);
-            this.btnbaocao.Name = "btnbaocao";
-            this.btnbaocao.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnbaocao.Rotation = 0D;
-            this.btnbaocao.Size = new System.Drawing.Size(277, 46);
-            this.btnbaocao.TabIndex = 14;
-            this.btnbaocao.Text = "   Báo cáo";
-            this.btnbaocao.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnbaocao.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnbaocao.UseVisualStyleBackColor = true;
-            this.btnbaocao.Click += new System.EventHandler(this.Btnthanhtoan_Click);
-            // 
-            // btnhoatdong
-            // 
-            this.btnhoatdong.FlatAppearance.BorderSize = 0;
-            this.btnhoatdong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnhoatdong.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnhoatdong.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnhoatdong.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnhoatdong.IconChar = FontAwesome.Sharp.IconChar.History;
-            this.btnhoatdong.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnhoatdong.IconSize = 35;
-            this.btnhoatdong.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnhoatdong.Location = new System.Drawing.Point(0, 363);
-            this.btnhoatdong.Name = "btnhoatdong";
-            this.btnhoatdong.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnhoatdong.Rotation = 0D;
-            this.btnhoatdong.Size = new System.Drawing.Size(277, 46);
-            this.btnhoatdong.TabIndex = 13;
-            this.btnhoatdong.Text = "   Hoạt động gần đây";
-            this.btnhoatdong.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnhoatdong.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnhoatdong.UseVisualStyleBackColor = true;
-            this.btnhoatdong.Click += new System.EventHandler(this.Btnhoatdong_Click);
-            // 
-            // btngoimon
-            // 
-            this.btngoimon.FlatAppearance.BorderSize = 0;
-            this.btngoimon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btngoimon.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btngoimon.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btngoimon.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btngoimon.IconChar = FontAwesome.Sharp.IconChar.Utensils;
-            this.btngoimon.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btngoimon.IconSize = 35;
-            this.btngoimon.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btngoimon.Location = new System.Drawing.Point(0, 299);
-            this.btngoimon.Name = "btngoimon";
-            this.btngoimon.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btngoimon.Rotation = 0D;
-            this.btngoimon.Size = new System.Drawing.Size(277, 46);
-            this.btngoimon.TabIndex = 12;
-            this.btngoimon.Text = "   Gọi món";
-            this.btngoimon.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btngoimon.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btngoimon.UseVisualStyleBackColor = true;
-            this.btngoimon.Click += new System.EventHandler(this.Btngoimon_Click);
-            // 
-            // btnbieudo
-            // 
-            this.btnbieudo.FlatAppearance.BorderSize = 0;
-            this.btnbieudo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnbieudo.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnbieudo.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnbieudo.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnbieudo.IconChar = FontAwesome.Sharp.IconChar.ChartBar;
-            this.btnbieudo.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnbieudo.IconSize = 35;
-            this.btnbieudo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnbieudo.Location = new System.Drawing.Point(0, 235);
-            this.btnbieudo.Name = "btnbieudo";
-            this.btnbieudo.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnbieudo.Rotation = 0D;
-            this.btnbieudo.Size = new System.Drawing.Size(277, 46);
-            this.btnbieudo.TabIndex = 11;
-            this.btnbieudo.Text = "   Biểu đồ doanh thu";
-            this.btnbieudo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnbieudo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnbieudo.UseVisualStyleBackColor = true;
-            this.btnbieudo.Click += new System.EventHandler(this.Btnbieudo_Click);
-            // 
-            // btnbangdieukhien
-            // 
-            this.btnbangdieukhien.FlatAppearance.BorderSize = 0;
-            this.btnbangdieukhien.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnbangdieukhien.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnbangdieukhien.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnbangdieukhien.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnbangdieukhien.IconChar = FontAwesome.Sharp.IconChar.Chalkboard;
-            this.btnbangdieukhien.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnbangdieukhien.IconSize = 35;
-            this.btnbangdieukhien.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnbangdieukhien.Location = new System.Drawing.Point(0, 171);
-            this.btnbangdieukhien.Name = "btnbangdieukhien";
-            this.btnbangdieukhien.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnbangdieukhien.Rotation = 0D;
-            this.btnbangdieukhien.Size = new System.Drawing.Size(277, 46);
-            this.btnbangdieukhien.TabIndex = 10;
-            this.btnbangdieukhien.Text = "   Bảng điều khiển";
-            this.btnbangdieukhien.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnbangdieukhien.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnbangdieukhien.UseVisualStyleBackColor = true;
-            this.btnbangdieukhien.Click += new System.EventHandler(this.Btnbangdieukhien_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.BackgroundImage = global::Viva_vegan.Properties.Resources.logo_transparent2;
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(286, 128);
-            this.panel2.TabIndex = 9;
             // 
             // Dashboard
             // 
@@ -516,6 +521,7 @@
             this.TextAlign = System.Windows.Forms.VisualStyles.HorizontalAlign.Right;
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Dashboard_FormClosed);
+            this.Load += new System.EventHandler(this.Dashboard_Load);
             this.pnNavi.ResumeLayout(false);
             this.pndesktop.ResumeLayout(false);
             this.pndesktop.PerformLayout();
@@ -554,6 +560,7 @@
         private FontAwesome.Sharp.IconButton btnlogout;
         private FontAwesome.Sharp.IconButton btnhelp;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Timer timerCheckExpire;
     }
 }
 

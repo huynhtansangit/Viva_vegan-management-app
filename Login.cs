@@ -5,11 +5,13 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Viva_vegan.ClassCSharp;
 
 namespace Viva_vegan
 {
@@ -31,7 +33,7 @@ namespace Viva_vegan
 
         private void Login_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode==Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 btndangnhap.PerformClick();
             }
@@ -39,57 +41,76 @@ namespace Viva_vegan
 
         private async Task<bool> kiemTraDangNhap()
         {
-            String name = txtusername.Text;
-            String pass = txtpassword.Text;
+            try
+            {
+                string name = txtusername.Text;
+                string pass = txtpassword.Text;
+                Console.WriteLine(pass);
 
-            if (String.IsNullOrWhiteSpace(name) | String.IsNullOrWhiteSpace(pass))
-            {
-                MessageBox.Show("Vui lòng không bỏ trống", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-            else
-            {
-                String querylogin = "dangkydangnhap @MANV @TENDANGNHAP @MATKHAU @Request";
-                DataTable dataTable = await ClassCSharp.ConnectDataBase.SessionConnect.executeQueryAsync(querylogin,
-                    new object[] { " ", name.Trim() , pass.Trim(), "login" });
-                if (dataTable.Rows.Count != 0)
+                if (string.IsNullOrWhiteSpace(name) | string.IsNullOrWhiteSpace(pass))
                 {
-                    ClassCSharp.User.Manv= dataTable.Rows[0].Field<String>(0);
-                    ClassCSharp.User.Macv = dataTable.Rows[0].Field<String>(1);
-                    ClassCSharp.User.Mabp = dataTable.Rows[0].Field<String>(2);
-                    ClassCSharp.User.Tennv = dataTable.Rows[0].Field<String>(3);
-                    ClassCSharp.User.Dienthoai = dataTable.Rows[0].Field<String>(4);
-                    ClassCSharp.User.Email = dataTable.Rows[0].Field<String>(5);
-                    ClassCSharp.User.Diachi = dataTable.Rows[0].Field<String>(6);
-                    ClassCSharp.User.Sotk = dataTable.Rows[0].Field<String>(7);
-                    ClassCSharp.User.Tendangnhap = dataTable.Rows[0].Field<String>(8);
-                    ClassCSharp.User.Matkhau = dataTable.Rows[0].Field<String>("matkhau");
-                    ClassCSharp.User.Ngayvaolam = Convert.ToDateTime( dataTable.Rows[0]["ngayvaolam"]);
-                    return true;
+                    MessageBox.Show("Vui lòng không bỏ trống", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
                 }
                 else
                 {
-                    MessageBox.Show("Tên đăng nhập hoặc mật khẩu không chính xác !", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
+                    pass = OptimizedPerformance.encryptor(pass);
+                    string querylogin = "dangkydangnhap @MANV @TENDANGNHAP @MATKHAU @Request";
+                    DataTable dataTable = await ClassCSharp.ConnectDataBase.SessionConnect.executeQueryAsync(querylogin,
+                        new object[] { " ", name.Trim(), pass.Trim(), "login" });
+                    if (dataTable.Rows.Count != 0)
+                    {
+                        ClassCSharp.User.Manv = dataTable.Rows[0].Field<string>(0);
+                        ClassCSharp.User.Macv = dataTable.Rows[0].Field<string>(1);
+                        ClassCSharp.User.Mabp = dataTable.Rows[0].Field<string>(2);
+                        ClassCSharp.User.Tennv = dataTable.Rows[0].Field<string>(3);
+                        ClassCSharp.User.Dienthoai = dataTable.Rows[0].Field<string>(4);
+                        ClassCSharp.User.Email = dataTable.Rows[0].Field<string>(5);
+                        ClassCSharp.User.Diachi = dataTable.Rows[0].Field<string>(6);
+                        ClassCSharp.User.Sotk = dataTable.Rows[0].Field<string>(7);
+                        ClassCSharp.User.Tendangnhap = dataTable.Rows[0].Field<string>(8);
+                        ClassCSharp.User.Matkhau = dataTable.Rows[0].Field<string>("matkhau");
+                        ClassCSharp.User.Ngayvaolam = Convert.ToDateTime(dataTable.Rows[0]["ngayvaolam"]);
+                        return true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Tên đăng nhập hoặc mật khẩu không chính xác !", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                OptimizedPerformance.showSomeThingWentWrong();
+                OptimizedPerformance.log(ex);
+                return false;
             }
         }
 
         private async void Btndangnhap_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            var GreetingForm =new Greeting();
-            GreetingForm.Show();
-            await Task.Delay(1000);
-            if (await kiemTraDangNhap())
+            try
             {
-                GreetingForm.Close();
-                new Dashboard().Show();
+                this.Hide();
+                var GreetingForm = new Greeting();
+                GreetingForm.Show();
+                await Task.Delay(1000);
+                if (await kiemTraDangNhap())
+                {
+                    GreetingForm.Close();
+                    new Dashboard().Show();
+                }
+                else
+                {
+                    GreetingForm.Close();
+                    new Login().Show();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                GreetingForm.Close();
-                new Login().Show();
+                OptimizedPerformance.showSomeThingWentWrong();
+                OptimizedPerformance.log(ex);
             }
         }
 
@@ -115,6 +136,10 @@ namespace Viva_vegan
         {
             this.Hide();
             new Register().Show();
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
         }
     }
 }

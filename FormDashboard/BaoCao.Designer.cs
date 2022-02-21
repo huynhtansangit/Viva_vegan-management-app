@@ -31,13 +31,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnxuatbaocao = new FontAwesome.Sharp.IconButton();
+            this.btnxembaocao = new FontAwesome.Sharp.IconButton();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dtpDenngay = new System.Windows.Forms.DateTimePicker();
             this.dtpTungay = new System.Windows.Forms.DateTimePicker();
             this.dgvHoadon = new System.Windows.Forms.DataGridView();
-            this.btnxuatbaocao = new FontAwesome.Sharp.IconButton();
-            this.btnxembaocao = new FontAwesome.Sharp.IconButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoadon)).BeginInit();
             this.SuspendLayout();
@@ -68,25 +68,63 @@
             this.label3.TabIndex = 10;
             this.label3.Text = "Double click vào bất kỳ hàng nào để xem chi tiết hóa đơn";
             // 
+            // btnxuatbaocao
+            // 
+            this.btnxuatbaocao.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnxuatbaocao.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnxuatbaocao.IconChar = FontAwesome.Sharp.IconChar.FileExport;
+            this.btnxuatbaocao.IconColor = System.Drawing.Color.Black;
+            this.btnxuatbaocao.IconSize = 20;
+            this.btnxuatbaocao.Location = new System.Drawing.Point(481, 39);
+            this.btnxuatbaocao.Name = "btnxuatbaocao";
+            this.btnxuatbaocao.Rotation = 0D;
+            this.btnxuatbaocao.Size = new System.Drawing.Size(155, 36);
+            this.btnxuatbaocao.TabIndex = 9;
+            this.btnxuatbaocao.Text = "Xuất";
+            this.btnxuatbaocao.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnxuatbaocao.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnxuatbaocao.UseVisualStyleBackColor = true;
+            this.btnxuatbaocao.Click += new System.EventHandler(this.Btnxuatbaocao_Click);
+            // 
+            // btnxembaocao
+            // 
+            this.btnxembaocao.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(136)))), ((int)(((byte)(0)))));
+            this.btnxembaocao.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnxembaocao.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnxembaocao.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnxembaocao.IconChar = FontAwesome.Sharp.IconChar.StickyNote;
+            this.btnxembaocao.IconColor = System.Drawing.Color.White;
+            this.btnxembaocao.IconSize = 20;
+            this.btnxembaocao.Location = new System.Drawing.Point(320, 39);
+            this.btnxembaocao.Name = "btnxembaocao";
+            this.btnxembaocao.Rotation = 0D;
+            this.btnxembaocao.Size = new System.Drawing.Size(155, 36);
+            this.btnxembaocao.TabIndex = 8;
+            this.btnxembaocao.Text = "Xem";
+            this.btnxembaocao.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnxembaocao.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnxembaocao.UseVisualStyleBackColor = false;
+            this.btnxembaocao.Click += new System.EventHandler(this.Btnxembaocao_Click);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(326, 7);
+            this.label2.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(326, 8);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 24);
+            this.label2.Size = new System.Drawing.Size(40, 22);
             this.label2.TabIndex = 7;
             this.label2.Text = "Đến";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(19, 7);
+            this.label1.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(19, 8);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 24);
+            this.label1.Size = new System.Drawing.Size(30, 22);
             this.label1.TabIndex = 6;
             this.label1.Text = "Từ";
             // 
@@ -127,44 +165,6 @@
             this.dgvHoadon.Size = new System.Drawing.Size(984, 482);
             this.dgvHoadon.TabIndex = 6;
             this.dgvHoadon.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvHoadon_CellDoubleClick);
-            // 
-            // btnxuatbaocao
-            // 
-            this.btnxuatbaocao.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnxuatbaocao.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnxuatbaocao.IconChar = FontAwesome.Sharp.IconChar.FileExport;
-            this.btnxuatbaocao.IconColor = System.Drawing.Color.Black;
-            this.btnxuatbaocao.IconSize = 20;
-            this.btnxuatbaocao.Location = new System.Drawing.Point(481, 39);
-            this.btnxuatbaocao.Name = "btnxuatbaocao";
-            this.btnxuatbaocao.Rotation = 0D;
-            this.btnxuatbaocao.Size = new System.Drawing.Size(155, 36);
-            this.btnxuatbaocao.TabIndex = 9;
-            this.btnxuatbaocao.Text = "Xuất";
-            this.btnxuatbaocao.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnxuatbaocao.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnxuatbaocao.UseVisualStyleBackColor = true;
-            this.btnxuatbaocao.Click += new System.EventHandler(this.Btnxuatbaocao_Click);
-            // 
-            // btnxembaocao
-            // 
-            this.btnxembaocao.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(136)))), ((int)(((byte)(0)))));
-            this.btnxembaocao.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnxembaocao.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnxembaocao.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnxembaocao.IconChar = FontAwesome.Sharp.IconChar.StickyNote;
-            this.btnxembaocao.IconColor = System.Drawing.Color.White;
-            this.btnxembaocao.IconSize = 20;
-            this.btnxembaocao.Location = new System.Drawing.Point(320, 39);
-            this.btnxembaocao.Name = "btnxembaocao";
-            this.btnxembaocao.Rotation = 0D;
-            this.btnxembaocao.Size = new System.Drawing.Size(155, 36);
-            this.btnxembaocao.TabIndex = 8;
-            this.btnxembaocao.Text = "Xem";
-            this.btnxembaocao.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnxembaocao.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnxembaocao.UseVisualStyleBackColor = false;
-            this.btnxembaocao.Click += new System.EventHandler(this.Btnxembaocao_Click);
             // 
             // BaoCao
             // 

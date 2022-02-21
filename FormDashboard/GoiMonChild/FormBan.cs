@@ -17,6 +17,10 @@ namespace Viva_vegan.FormDashboard.GoiMonChild
     {
         private List<KhuVuc> khuvucs = new List<KhuVuc>();
         private GoiMon myParent;
+        private List<decimal> sl = new List<decimal>();
+
+        public List<decimal> Sl { get => sl; set => sl = value; }
+
         public FormBan(GoiMon goiMon)
         {
             InitializeComponent();
@@ -41,9 +45,9 @@ namespace Viva_vegan.FormDashboard.GoiMonChild
         {
             Ban ban = (Ban)(sender as IconButton).Tag;
             DialogResult result = new DialogResult();
-            if(ban.Trangthai.Contains("empty")) // bàn trống gọi món
+            if (ban.Trangthai.Contains("empty")) // bàn trống gọi món
             {
-                result = MessageBox.Show(String.Format("Bạn muốn gọi món cho {0} ?",ban.Tenban), "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                result = MessageBox.Show(String.Format("Bạn muốn gọi món cho {0} ?", ban.Tenban), "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
                     myParent.btnChonban.PerformClick();
@@ -58,7 +62,7 @@ namespace Viva_vegan.FormDashboard.GoiMonChild
                 if (result == DialogResult.Yes)
                 {
                     myParent.btnChonban.PerformClick();
-                    myParent.ClearThanhToanInfo();
+                    myParent.ClearThanhToanInfo(myParent.xuiCustomGroupbox2);
                     myParent.btnthongtinban.Text = "Thông tin bàn " + ban.Tenban + "-" + ban.Makhuvuc;
                     myParent.btntrangthai.Text = "Đang thực hiện thanh toán / cập nhật";
                     myParent.btnthongtinban.Tag = ban;
@@ -66,32 +70,54 @@ namespace Viva_vegan.FormDashboard.GoiMonChild
                     // lấy chi tiết hóa đơn đổ lên dgvhoadon.
                     String mahoadondanghoatdong = new BanDangHoatDong().getMaHoaDonFromMaBan(ban.Soban);
                     myParent.dgvhoadon.Rows.Clear();
-                    List <ChiTietHoaDon> cthds =new ChiTietHoaDon().chiTietHoaDons(mahoadondanghoatdong);
+                    List<ChiTietHoaDon> cthds = new ChiTietHoaDon().chiTietHoaDons(mahoadondanghoatdong);
                     foreach (ChiTietHoaDon item in cthds)
                     {
                         DataGridViewRow row = (DataGridViewRow)myParent.dgvhoadon.Rows[0].Clone();
                         row.Cells[0].Value = item.Mamon;
                         row.Cells[1].Value = item.Tenmon;
                         row.Cells[2].Value = item.Dvt;
-                        row.Cells[3].Value = item.Dongia;
+                        row.Cells[3].Value = OptimizedPerformance.formatCurrency(item.Dongia);
                         row.Cells[4].Value = item.Soluong;
-                        row.Cells[5].Value = item.Dongia* item.Soluong;
-                        tongtien += Convert.ToInt64(row.Cells[5].Value);
+                        sl.Add(item.Soluong);
+                        row.Cells[5].Value = OptimizedPerformance.formatCurrency(item.Dongia * item.Soluong);
+                        tongtien += Convert.ToInt64(OptimizedPerformance.ParseDecimalFromCurrency(row.Cells[5].Value.ToString()));
                         DataGridViewCellStyle style = new DataGridViewCellStyle();
                         style.BackColor = Color.Blue;
                         row.Tag = cthds.Count;
                         myParent.dgvhoadon.Rows.Add(row);
                     }
+
+                    try
+                    {
+                        if (myParent.dgvhoadon.Tag is null)
+                        {
+                            myParent.dgvhoadon.Tag = sl;
+                        }
+                        else
+                            OptimizedPerformance.log("dgvhoadon had tag");
+                    }
+                    catch (Exception ex)
+                    {
+                        OptimizedPerformance.showSomeThingWentWrong();
+                        OptimizedPerformance.log(ex);
+                    }
                     //thông số hóa đơn
-                    myParent.btnthanhtien.ButtonText = tongtien.ToString("C0");
-                    myParent.btnthanhtien.Tag = tongtien;
-                    myParent.btnvat.ButtonText = ((double)tongtien*0.1).ToString("C0");
+
+                    myParent.btnvat.ButtonText = OptimizedPerformance.formatCurrency(decimal.Parse(((double)tongtien * 0.1).ToString()));
                     myParent.btnvat.Tag = ((double)tongtien * 0.1);
+                    myParent.btnthanhtien.ButtonText = OptimizedPerformance.formatCurrency(decimal.Parse(((double)(tongtien + tongtien * 0.1)).ToString()));
+                    myParent.btnthanhtien.Tag = (double)1.1 * tongtien;
+                    myParent.btntiensaukhigiamm.ButtonText = OptimizedPerformance.formatCurrency(decimal.Parse(((double)(tongtien + tongtien * 0.1)).ToString()));
+                    myParent.btntiensaukhigiamm.Tag = (double)1.1 * tongtien;
                     myParent.txbtienkhachdua.Enabled = true;
+                    myParent.enableGetInfoKH();
+                    myParent.cbkhachvanglai.Tag = new SoTienGocKhiThanhToan(tongtien.ToString(), ((double)tongtien * 0.1).ToString());
+                    //myParent.cbkhachvanglai.Enabled = false;
                 }
             }
-           
-            
+
+
         }
         #endregion
 
@@ -121,7 +147,7 @@ namespace Viva_vegan.FormDashboard.GoiMonChild
             ibutton.Tag = ban;
             ibutton.Click += eventClickBan;
             // group box
-            grbBan.BorderWidth = 1;
+            grbBan.BorderWidth = 2;
             grbBan.Font = new System.Drawing.Font("Cooper Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             grbBan.ShowText = true;
             grbBan.Size = new System.Drawing.Size(115, 120);
@@ -151,31 +177,50 @@ namespace Viva_vegan.FormDashboard.GoiMonChild
             return grbBan;
         }
 
-         
+
 
         public void loadBan(String khuvuc)
         {
-            flpBan.Controls.Clear();
-            List<Ban> bans = new Ban().loadList("");
-            if (!String.IsNullOrWhiteSpace(khuvuc))
-            {
-                bans = new Ban().loadList(khuvuc);
-            }
-            foreach (Ban item in bans)
-            {
-                XUICustomGroupbox grbBtn = createCustomBtn(item);
-                flpBan.Controls.Add(grbBtn);
 
+            try
+            {
+                flpBan.Controls.Clear();
+                List<Ban> bans = new Ban().loadList("");
+                if (!String.IsNullOrWhiteSpace(khuvuc))
+                {
+                    bans = new Ban().loadList(khuvuc);
+                }
+                foreach (Ban item in bans)
+                {
+                    XUICustomGroupbox grbBtn = createCustomBtn(item);
+                    flpBan.Controls.Add(grbBtn);
+
+                }
             }
+            catch (Exception ex)
+            {
+                OptimizedPerformance.showSomeThingWentWrong();
+                OptimizedPerformance.log(ex);
+            }
+
         }
         private async void loadKhuVuc()
         {
-            khuvucs = await new KhuVuc().loadListKhuVuc();
-            foreach (KhuVuc item in khuvucs)
+
+            try
             {
-                cbbkhuvuc.Items.Add(item.Tenkhuvuc);
+                khuvucs = await new KhuVuc().loadListKhuVuc();
+                foreach (KhuVuc item in khuvucs)
+                {
+                    cbbkhuvuc.Items.Add(item.Tenkhuvuc);
+                }
+                cbbkhuvuc.Items.Add("Tất cả");
             }
-            cbbkhuvuc.Items.Add("Tất cả");
+            catch (Exception ex)
+            {
+                OptimizedPerformance.showSomeThingWentWrong();
+                OptimizedPerformance.log(ex);
+            }
         }
         #endregion
     }

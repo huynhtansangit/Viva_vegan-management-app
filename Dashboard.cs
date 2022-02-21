@@ -5,10 +5,13 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FontAwesome.Sharp;
 using MetroFramework.Forms;
+using Viva_vegan.ClassCSharp;
+
 namespace Viva_vegan
 
 {
@@ -32,7 +35,7 @@ namespace Viva_vegan
             pnNavi.Controls.Add(leftBorderBtn);
             lbltenformhientai.Text = "Home" + "     Hello, " +
                 ClassCSharp.User.Tennv;
-
+            Control.CheckForIllegalCrossThreadCalls = false;
         }
         //ClassCSharp.User.Ngayvaolam.ToString("dd/MM/yyyy")
         #region Events
@@ -74,7 +77,7 @@ namespace Viva_vegan
         private void Btnhoatdong_Click(object sender, EventArgs e)
         {
             activeButton(sender, RGBColors.color4);
-            openChildForm(new FormDashboard.HoatDongGanDay());
+            openChildForm(new FormDashboard.ChuongTrinhKm());
         }
 
         private void Btnthanhtoan_Click(object sender, EventArgs e)
@@ -232,6 +235,35 @@ namespace Viva_vegan
         {
              string sHTMLHelpFileName = "Help\\Help.chm";
                System.Windows.Forms.Help.ShowHelp(this, Application.StartupPath + @"\" + sHTMLHelpFileName);
+        }
+
+        public static void CheckKmExpire ()
+        {
+            try
+            {
+                new Thread(() =>
+                {
+                    while (true)
+                    {
+                        int res = ConnectDataBase.SessionConnect.executeNonQuery("CapNhatNgayHetHanKm");
+                        if (res > 0)
+                        { Console.WriteLine("Cập nhật Khuyến mãi thành công"); }
+                        else Console.WriteLine("Lỗi xảy ra");
+                        Thread.Sleep(3600000);
+                    }
+                })
+                { IsBackground = true }.Start();
+            }
+            catch (Exception ex)
+            {
+                OptimizedPerformance.showSomeThingWentWrong();
+                OptimizedPerformance.log(ex);
+            }
+        }
+
+        private void Dashboard_Load(object sender, EventArgs e)
+        {
+            CheckKmExpire();
         }
     }
 }

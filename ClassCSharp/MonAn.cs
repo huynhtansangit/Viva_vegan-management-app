@@ -21,36 +21,44 @@ namespace Viva_vegan.ClassCSharp
         
         public MonAn(String mamon="")
         {
-            String query = "select * from MonAn where mamon='" + mamon+
+            try
+            {
+                String query = "select * from MonAn where matrangthai='activ' and mamon='" + mamon +
                 "'";
-            if (string.IsNullOrEmpty(mamon))
-            {
-                query = "select * from MonAn";
+                if (string.IsNullOrEmpty(mamon))
+                {
+                    query = "select * from MonAn matrangthai='activ'";
+                }
+                DataTable table = ConnectDataBase.SessionConnect.executeQuery(query);
+                foreach (DataRow row in table.Rows)
+                {
+                    if (row[5] == DBNull.Value)
+                    {
+                        ImageConverter converter = new ImageConverter();
+                        Byte[] image = (byte[])converter.ConvertTo(Viva_vegan.Properties.Resources.an1, typeof(byte[]));
+                        this.mamon = row[0].ToString();
+                        this.tenmon = row[1].ToString();
+                        this.giaban = Convert.ToInt32(row[2]);
+                        this.mota = row[3].ToString();
+                        this.dvt = row[4].ToString();
+                        this.hinh = image;
+
+                    }
+                    else
+                    {
+                        this.mamon = row[0].ToString();
+                        this.tenmon = row[1].ToString();
+                        this.giaban = Convert.ToInt32(row[2]);
+                        this.mota = row[3].ToString();
+                        this.dvt = row[4].ToString();
+                        this.hinh = (byte[])(row[5]);
+                    }
+                }
             }
-            DataTable table = ConnectDataBase.SessionConnect.executeQuery(query);
-            foreach (DataRow row in table.Rows)
+            catch (Exception ex)
             {
-                if (row[5] == DBNull.Value)
-                {
-                    ImageConverter converter = new ImageConverter();
-                    Byte[] image = (byte[])converter.ConvertTo(Viva_vegan.Properties.Resources.an1, typeof(byte[]));
-                    this.mamon = row[0].ToString();
-                    this.tenmon = row[1].ToString();
-                    this.giaban = Convert.ToInt32(row[2]);
-                    this.mota = row[3].ToString();
-                    this.dvt = row[4].ToString();
-                    this.hinh = image;
-                    
-                }
-                else
-                {
-                    this.mamon = row[0].ToString();
-                    this.tenmon = row[1].ToString();
-                    this.giaban = Convert.ToInt32(row[2]);
-                    this.mota = row[3].ToString();
-                    this.dvt = row[4].ToString();
-                    this.hinh = (byte[])(row[5]);
-                }
+                OptimizedPerformance.showSomeThingWentWrong();
+                OptimizedPerformance.log(ex);
             }
         }
         public MonAn()
@@ -145,11 +153,11 @@ namespace Viva_vegan.ClassCSharp
             }
             return ma;
         }
-        public List<MonAn> GetMonAns ()
+        public async Task<List<MonAn>> GetMonAns ()
         {
             List<MonAn> list = new List<MonAn>();
-            String query = "select * from MonAn";
-            DataTable table = ConnectDataBase.SessionConnect.executeQuery(query);
+            String query = "select * from MonAn where matrangthai='activ'";
+            DataTable table =await ConnectDataBase.SessionConnect.executeQueryAsync(query);
             foreach (DataRow row in table.Rows)
             {
                 if (row[5]==DBNull.Value)
@@ -227,9 +235,9 @@ namespace Viva_vegan.ClassCSharp
             String query = "select * from MonAn";
             if (order.Contains ("giam"))
             {
-                query = "select * from MonAn order by giaban asc";
+                query = "select * from MonAn where matrangthai='activ' order by giaban asc";
             }
-            else query = "select * from MonAn order by giaban desc";
+            else query = "select * from MonAn where matrangthai='activ' order by giaban desc";
             DataTable table = ConnectDataBase.SessionConnect.executeQuery(query);
             foreach (DataRow row in table.Rows)
             {
@@ -273,7 +281,7 @@ namespace Viva_vegan.ClassCSharp
             String query = "";
             if (timtheo.Contains("Mã"))
             {
-                query = "select * from MonAn where mamon like N'%" +tukhoa+
+                query = "select * from MonAn where matrangthai='activ' and mamon like N'%" +tukhoa+
                     "%'";
                 DataTable table = ConnectDataBase.SessionConnect.executeQuery(query);
                 foreach(DataRow row in table.Rows)
@@ -283,7 +291,7 @@ namespace Viva_vegan.ClassCSharp
             }
             else if(timtheo.Contains("Tên"))
             {
-                query = "select * from MonAn where tenmon like N'%" + tukhoa +
+                query = "select * from MonAn where matrangthai='activ' and tenmon like N'%" + tukhoa +
                     "%'";
                 DataTable table = ConnectDataBase.SessionConnect.executeQuery(query);
                 foreach (DataRow row in table.Rows)

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Viva_vegan.ClassCSharp;
 
 namespace Viva_vegan
 {
@@ -71,7 +72,7 @@ namespace Viva_vegan
             DataTable dataTable = ClassCSharp.ConnectDataBase.SessionConnect.executeQuery(queryTim);
             foreach (DataRow row in dataTable.Rows)
             {
-                cardThongtin.Text1 = row["tennv"].ToString();
+                cardThongtin.Text1 = row["manv"].ToString()+"-"+ row["tennv"].ToString();
                 cardThongtin.Text2 = row["sotaikhoannv"].ToString();
                 cardThongtin.Text3 = row["diachinv"].ToString();
                 txttendangnhap.Text= row["tendangnhap"].ToString();
@@ -96,7 +97,7 @@ namespace Viva_vegan
                     int result = ClassCSharp.ConnectDataBase.SessionConnect.executeNonQuery(query, 
                         new object[] { manv.Trim(),
                         tendangnhap.Trim(),
-                        pass.Trim(), "register" });
+                        OptimizedPerformance.encryptor(pass.Trim()), "register" });
                     if (result==1)
                     {
                         MessageBox.Show("Đăng ký thành công !", "Thông báo", MessageBoxButtons.OK,MessageBoxIcon.Asterisk);

@@ -33,9 +33,9 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.pnline1 = new XanderUI.XUIGradientPanel();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnthoat = new FontAwesome.Sharp.IconButton();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnthoat = new FontAwesome.Sharp.IconButton();
             this.txtusername = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btndangnhap = new FontAwesome.Sharp.IconButton();
@@ -97,25 +97,6 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Change What You Eat\r\nChange The World.";
             // 
-            // btnthoat
-            // 
-            this.btnthoat.FlatAppearance.BorderSize = 0;
-            this.btnthoat.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(219)))), ((int)(((byte)(149)))));
-            this.btnthoat.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(150)))), ((int)(((byte)(131)))));
-            this.btnthoat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnthoat.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnthoat.IconChar = FontAwesome.Sharp.IconChar.Times;
-            this.btnthoat.IconColor = System.Drawing.Color.Black;
-            this.btnthoat.IconSize = 25;
-            this.btnthoat.Location = new System.Drawing.Point(285, 0);
-            this.btnthoat.Name = "btnthoat";
-            this.btnthoat.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.btnthoat.Rotation = 0D;
-            this.btnthoat.Size = new System.Drawing.Size(40, 40);
-            this.btnthoat.TabIndex = 2;
-            this.btnthoat.UseVisualStyleBackColor = true;
-            this.btnthoat.Click += new System.EventHandler(this.IBtnExit_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -137,6 +118,25 @@
             this.pictureBox1.Size = new System.Drawing.Size(290, 420);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // btnthoat
+            // 
+            this.btnthoat.FlatAppearance.BorderSize = 0;
+            this.btnthoat.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(219)))), ((int)(((byte)(149)))));
+            this.btnthoat.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(150)))), ((int)(((byte)(131)))));
+            this.btnthoat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnthoat.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnthoat.IconChar = FontAwesome.Sharp.IconChar.Times;
+            this.btnthoat.IconColor = System.Drawing.Color.Black;
+            this.btnthoat.IconSize = 25;
+            this.btnthoat.Location = new System.Drawing.Point(285, 0);
+            this.btnthoat.Name = "btnthoat";
+            this.btnthoat.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.btnthoat.Rotation = 0D;
+            this.btnthoat.Size = new System.Drawing.Size(40, 40);
+            this.btnthoat.TabIndex = 2;
+            this.btnthoat.UseVisualStyleBackColor = true;
+            this.btnthoat.Click += new System.EventHandler(this.IBtnExit_Click);
             // 
             // txtusername
             // 
@@ -239,7 +239,7 @@
             this.txtpassword.PasswordChar = '*';
             this.txtpassword.Size = new System.Drawing.Size(264, 25);
             this.txtpassword.TabIndex = 4;
-            this.txtpassword.Text = "toa123";
+            this.txtpassword.Text = "123";
             this.txtpassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label2
@@ -279,6 +279,7 @@
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.Login_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Login_KeyDown);
             this.pnBannerLeft.ResumeLayout(false);
             this.pnBannerLeft.PerformLayout();

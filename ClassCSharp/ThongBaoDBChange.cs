@@ -17,7 +17,16 @@ namespace Viva_vegan.ClassCSharp
             Act = obj;
             command = cmd;
             // Start listening notification
-            SqlDependency.Start(connectionString);
+
+            try
+            {
+                SqlDependency.Start(connectionString);
+            }
+            catch (Exception ex)
+            {
+                OptimizedPerformance.showSomeThingWentWrong();
+                OptimizedPerformance.log(ex);
+            }
         }
 
         public void loadData()
@@ -25,32 +34,59 @@ namespace Viva_vegan.ClassCSharp
             // Connect to DB, create subscriber
             using (SqlConnection con = new SqlConnection(connectionString))
             {
-                con.Open();
-                SqlCommand cmd = new SqlCommand(command, con);
-                SqlDependency de = new SqlDependency(cmd);
 
-                // This event will run when receive message from DB
-                de.OnChange += new OnChangeEventHandler(de_OnChange);
+                try
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand(command, con);
+                    SqlDependency de = new SqlDependency(cmd);
 
-                // Subcriber
-                cmd.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
+                    // This event will run when receive message from DB
+                    de.OnChange += new OnChangeEventHandler(de_OnChange);
 
-                // Run action that you want to do on changed
-                Act?.Invoke();
+                    // Subcriber
+                    cmd.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
+
+                    // Run action that you want to do on changed
+                    Act?.Invoke();
+                }
+                catch (Exception ex)
+                {
+                    OptimizedPerformance.showSomeThingWentWrong();
+                    OptimizedPerformance.log(ex);
+                }
             }
         }
 
         private void de_OnChange(object sender, SqlNotificationEventArgs e)
         {
-            SqlDependency de = sender as SqlDependency;
-            de.OnChange -= de_OnChange;
-            loadData();
+
+            try
+            {
+                SqlDependency de = sender as SqlDependency;
+                de.OnChange -= de_OnChange;
+                loadData();
+            }
+            catch (Exception ex)
+            {
+                OptimizedPerformance.showSomeThingWentWrong();
+                OptimizedPerformance.log(ex);
+            }
         }
 
         public void Dispose()
         {
             // Unregister the notification subscription for the current instance.
-            SqlDependency.Stop(connectionString);
+
+            try
+            {
+                SqlDependency.Stop(connectionString);
+            }
+            catch (Exception ex)
+            {
+                OptimizedPerformance.showSomeThingWentWrong();
+                OptimizedPerformance.log(ex);
+            }
         }
     }
 }

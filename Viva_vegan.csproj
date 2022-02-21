@@ -32,14 +32,43 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>packages\BouncyCastle.1.8.6.1\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="FontAwesome.Sharp, Version=5.14.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\FontAwesome.Sharp.5.14.0\lib\net472\FontAwesome.Sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\iTextSharp.5.5.13.2\lib\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
       <HintPath>packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
@@ -72,8 +101,12 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
@@ -94,11 +127,46 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BAN.cs">
+      <DependentUpon>QLNH_model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BOPHAN.cs">
+      <DependentUpon>QLNH_model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="checkKmMA_Result.cs">
+      <DependentUpon>QLNH_model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="checkKmTU_Result.cs">
+      <DependentUpon>QLNH_model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHUCVU.cs">
+      <DependentUpon>QLNH_model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHUONGTRINHKM.cs">
+      <DependentUpon>QLNH_model.tt</DependentUpon>
+    </Compile>
     <Compile Include="ClassCSharp\Ban.cs" />
     <Compile Include="ClassCSharp\BanDangHoatDong.cs" />
+    <Compile Include="ClassCSharp\BaoCheBien.cs" />
     <Compile Include="ClassCSharp\BoPhan.cs" />
     <Compile Include="ClassCSharp\ChiTietHoaDon.cs" />
     <Compile Include="ClassCSharp\ChucVu.cs" />
+    <Compile Include="ClassCSharp\ChuongTrinhKM\ChuongTrinhKM.cs" />
+    <Compile Include="ClassCSharp\ChuongTrinhKM\CTKMFunction.cs" />
+    <Compile Include="ClassCSharp\ChuongTrinhKM\DieuKienKM.cs" />
+    <Compile Include="ClassCSharp\ChuongTrinhKM\FormGiamGiaHoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClassCSharp\ChuongTrinhKM\FormGiamGiaHoaDon.Designer.cs">
+      <DependentUpon>FormGiamGiaHoaDon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClassCSharp\ChuongTrinhKM\FormTangDiemKhuyenMai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClassCSharp\ChuongTrinhKM\FormTangDiemKhuyenMai.Designer.cs">
+      <DependentUpon>FormTangDiemKhuyenMai.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClassCSharp\ChuongTrinhKM\LoaiCTKM.cs" />
     <Compile Include="ClassCSharp\ConnectDataBase.cs" />
     <Compile Include="ClassCSharp\DoanhThuClass.cs" />
     <Compile Include="ClassCSharp\HoaDon.cs" />
@@ -111,11 +179,23 @@
     <Compile Include="ClassCSharp\ThongBaoDBChange.cs" />
     <Compile Include="ClassCSharp\ThucUong.cs" />
     <Compile Include="ClassCSharp\User.cs" />
+    <Compile Include="CTHD_MA.cs">
+      <DependentUpon>QLNH_model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CTHD_TU.cs">
+      <DependentUpon>QLNH_model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dangkydangnhap_Result.cs">
+      <DependentUpon>QLNH_model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DIEUKIENKM.cs">
+      <DependentUpon>QLNH_model.tt</DependentUpon>
     </Compile>
     <Compile Include="FormDashboard\BangDieuKhien.cs">
       <SubType>Form</SubType>
@@ -143,11 +223,41 @@
     <Compile Include="FormDashboard\DoanhThu.Designer.cs">
       <DependentUpon>DoanhThu.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormDashboard\FormApplyCTKM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDashboard\FormApplyCTKM.Designer.cs">
+      <DependentUpon>FormApplyCTKM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDashboard\FormDangKyNhanhKH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDashboard\FormDangKyNhanhKH.Designer.cs">
+      <DependentUpon>FormDangKyNhanhKH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDashboard\FormKiemTraThongTinKH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDashboard\FormKiemTraThongTinKH.Designer.cs">
+      <DependentUpon>FormKiemTraThongTinKH.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormDashboard\GoiMon.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormDashboard\GoiMon.Designer.cs">
       <DependentUpon>GoiMon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDashboard\GoiMonChild\BaoCheBienReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BaoCheBienReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FormDashboard\GoiMonChild\ChiTietHoaDonBaoCao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDashboard\GoiMonChild\ChiTietHoaDonBaoCao.Designer.cs">
+      <DependentUpon>ChiTietHoaDonBaoCao.cs</DependentUpon>
     </Compile>
     <Compile Include="FormDashboard\GoiMonChild\ChiTietHoaDonBill.cs" />
     <Compile Include="FormDashboard\GoiMonChild\FormBan.cs">
@@ -155,6 +265,12 @@
     </Compile>
     <Compile Include="FormDashboard\GoiMonChild\FormBan.Designer.cs">
       <DependentUpon>FormBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDashboard\GoiMonChild\FormBaoCheBien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDashboard\GoiMonChild\FormBaoCheBien.Designer.cs">
+      <DependentUpon>FormBaoCheBien.cs</DependentUpon>
     </Compile>
     <Compile Include="FormDashboard\GoiMonChild\FormPrint.cs">
       <SubType>Form</SubType>
@@ -168,11 +284,11 @@
       <DependentUpon>HoaDonReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="FormDashboard\HoatDongGanDay.cs">
+    <Compile Include="FormDashboard\ChuongTrinhKM.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormDashboard\HoatDongGanDay.Designer.cs">
-      <DependentUpon>HoatDongGanDay.cs</DependentUpon>
+    <Compile Include="FormDashboard\ChuongTrinhKM.Designer.cs">
+      <DependentUpon>ChuongTrinhKM.cs</DependentUpon>
     </Compile>
     <Compile Include="FormDashboard\BaoCao.cs">
       <SubType>Form</SubType>
@@ -180,6 +296,7 @@
     <Compile Include="FormDashboard\BaoCao.Designer.cs">
       <DependentUpon>BaoCao.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormDashboard\GoiMonChild\SoTienGocKhiThanhToan.cs" />
     <Compile Include="FormDashboard\ThongTin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -198,11 +315,47 @@
     <Compile Include="FormHienThiChiTiet\HienThiChiTiet.Designer.cs">
       <DependentUpon>HienThiChiTiet.cs</DependentUpon>
     </Compile>
+    <Compile Include="HOADON.cs">
+      <DependentUpon>QLNH_model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KHACHHANG.cs">
+      <DependentUpon>QLNH_model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KHO.cs">
+      <DependentUpon>QLNH_model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KHUVUC.cs">
+      <DependentUpon>QLNH_model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="loadbxhmonan_Result.cs">
+      <DependentUpon>QLNH_model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="loadbxhnhanvien_Result.cs">
+      <DependentUpon>QLNH_model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="loadbxhthucuong_Result.cs">
+      <DependentUpon>QLNH_model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOAICTKM.cs">
+      <DependentUpon>QLNH_model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOAIKH.cs">
+      <DependentUpon>QLNH_model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MONAN.cs">
+      <DependentUpon>QLNH_model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NGUYENLIEU.cs">
+      <DependentUpon>QLNH_model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NHANVIEN.cs">
+      <DependentUpon>QLNH_model.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -211,13 +364,58 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="QLNH_model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLNH_model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QLNH_model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLNH_model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QLNH_model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLNH_model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="QUANHE_HD_DKKM.cs">
+      <DependentUpon>QLNH_model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QUYENHAN.cs">
+      <DependentUpon>QLNH_model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Register.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>QLNH_model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>QLNH_model.tt</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>QLNH_model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="THUCUONG.cs">
+      <DependentUpon>QLNH_model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TONKHO.cs">
+      <DependentUpon>QLNH_model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TRANGTHAI.cs">
+      <DependentUpon>QLNH_model.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ClassCSharp\ChuongTrinhKM\FormGiamGiaHoaDon.resx">
+      <DependentUpon>FormGiamGiaHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClassCSharp\ChuongTrinhKM\FormTangDiemKhuyenMai.resx">
+      <DependentUpon>FormTangDiemKhuyenMai.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -234,11 +432,30 @@
     <EmbeddedResource Include="FormDashboard\DoanhThu.resx">
       <DependentUpon>DoanhThu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormDashboard\FormApplyCTKM.resx">
+      <DependentUpon>FormApplyCTKM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDashboard\FormDangKyNhanhKH.resx">
+      <DependentUpon>FormDangKyNhanhKH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDashboard\FormKiemTraThongTinKH.resx">
+      <DependentUpon>FormKiemTraThongTinKH.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormDashboard\GoiMon.resx">
       <DependentUpon>GoiMon.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormDashboard\GoiMonChild\BaoCheBienReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>BaoCheBienReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDashboard\GoiMonChild\ChiTietHoaDonBaoCao.resx">
+      <DependentUpon>ChiTietHoaDonBaoCao.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormDashboard\GoiMonChild\FormBan.resx">
       <DependentUpon>FormBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDashboard\GoiMonChild\FormBaoCheBien.resx">
+      <DependentUpon>FormBaoCheBien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDashboard\GoiMonChild\FormPrint.resx">
       <DependentUpon>FormPrint.cs</DependentUpon>
@@ -247,8 +464,8 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>HoaDonReport.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormDashboard\HoatDongGanDay.resx">
-      <DependentUpon>HoatDongGanDay.cs</DependentUpon>
+    <EmbeddedResource Include="FormDashboard\ChuongTrinhKM.resx">
+      <DependentUpon>ChuongTrinhKM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDashboard\BaoCao.resx">
       <DependentUpon>BaoCao.cs</DependentUpon>
@@ -274,6 +491,10 @@
       <DependentUpon>Register.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\CHUONGTRINHKM.datasource" />
+    <None Include="Properties\DataSources\DIEUKIENKM.datasource" />
+    <None Include="Properties\DataSources\Viva_vegan.ClassCSharp.MonAn.datasource" />
+    <None Include="Properties\DataSources\Viva_vegan.ClassCSharp.ThucUong.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -288,6 +509,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <EntityDeploy Include="QLNH_model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>QLNH_model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="QLNH_model.edmx.diagram">
+      <DependentUpon>QLNH_model.edmx</DependentUpon>
+    </None>
     <None Include="Resources\logo_transparent.png" />
   </ItemGroup>
   <ItemGroup>
@@ -317,6 +545,16 @@
     <None Include="Resources\loading.gif" />
     <None Include="Resources\Plant.gif" />
     <None Include="Resources\Plant-spinner.gif" />
+    <Content Include="QLNH_model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QLNH_model.edmx</DependentUpon>
+      <LastGenOutput>QLNH_model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="QLNH_model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QLNH_model.edmx</DependentUpon>
+      <LastGenOutput>QLNH_model.cs</LastGenOutput>
+    </Content>
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -336,6 +574,7 @@
     <None Include="Resources\an1.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
